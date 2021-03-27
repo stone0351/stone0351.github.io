@@ -60,6 +60,22 @@
 
 	<div class="catalogue">
 		
+			<a href="https://blog.getmemap.com/posts/20210326/" class="catalogue-item">
+    <div>
+        <time datetime="2021-03-26 22:08:44 -0700 PDT" class="catalogue-time">March 26, 2021</time>
+        <h4 class="catalogue-title">Vehicle Kinematic Model</h4>
+        <div class="catalogue-line"></div>
+
+        <p>
+            $$\begin{align*} \dot{x}_c = v \cos{(\theta + \beta)} \
+\dot{y}_c = v \sin{(\theta + \beta)} \
+\dot{\theta} = \frac{v \cos{\beta} \tan{\delta}}{L} \
+\dot{\delta} = \omega \
+\beta = \tan^{-1}(\frac{l_r \tan{\delta}}{L}) \end{align*}$$ where the inputs are the bicycle speed $v$ and steering angle rate $\omega$. The input can also directly be the steering angle $\delta$ rather than its rate in the simplified case. The Python model will allow us both implementations. In order to create this model, it&rsquo;s a good idea to make use of Python class objects.
+        </p>
+    </div>
+</a>
+		
 			<a href="https://blog.getmemap.com/posts/20210325/" class="catalogue-item">
     <div>
         <time datetime="2021-03-25 19:35:34 -0700 PDT" class="catalogue-time">March 25, 2021</time>
@@ -67,7 +83,10 @@
         <div class="catalogue-line"></div>
 
         <p>
-            
+            git log git status
+git add -A . git commit -m &ldquo;Initial commit&rdquo;
+git remote -v git remote remove origin git remote add origin https://github.com/stone0351/stone0351.github.io
+git push -u origin master git pull origin git merge origin/master
         </p>
     </div>
 </a>
@@ -86,7 +105,7 @@
         		<footer>
 			
 			<span>
-			&copy; <time datetime="2021-03-26 20:27:18.503643 -0700 PDT m=&#43;0.082994574">2021</time> Shi. CA
+			&copy; <time datetime="2021-03-26 22:19:24.243004 -0700 PDT m=&#43;0.103415559">2021</time> Shi. CA
 			</span>
 		</footer>
 
