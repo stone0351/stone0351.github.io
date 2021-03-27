@@ -10,15 +10,43 @@
 
 	
 	<link rel="stylesheet" href="/css/style.css">
-	<link rel="stylesheet" href="/%20css/fonts.css">
+	<link rel="stylesheet" href='/css/fonts.css'>
 	
-	<link rel="icon" type="image/png" sizes="32x32" href="/%20images/favicon-32x32.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="/%20images/favicon-16x16.png">
-	<link rel="apple-touch-icon" sizes="180x180" href="/%20images/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href='/images/favicon-32x32.png'>
+	<link rel="icon" type="image/png" sizes="16x16" href='/images/favicon-16x16.png'>
+	<link rel="apple-touch-icon" sizes="180x180" href='/images/apple-touch-icon.png'>
 
 	
 	<link href="" rel="alternate"
 		type="application/rss+xml" title="Shi&#39;s Gists and Reflection" />
+
+	
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	
+	<script>
+    MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']],
+            displayMath: [['$$', '$$'], ['\\[', '\\]']],
+            processEscapes: true,
+            processEnvironments: true
+        },
+        options: {
+            skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+        }
+    };
+
+    window.addEventListener('load', (event) => {
+        document.querySelectorAll("mjx-container").forEach(function (x) {
+            x.parentElement.classList += 'has-jax'
+        })
+    });
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
 </head>
     <body>
@@ -62,7 +90,7 @@
         <div class="catalogue-line"></div>
 
         <p>
-            $$\begin{align*} \dot{x}_c = v \cos{(\theta + \beta)} \
+            $$\begin{align*} \dot{x}_c = v \cos{(\theta + \beta)}\
 \dot{y}_c = v \sin{(\theta + \beta)} \
 \dot{\theta} = \frac{v \cos{\beta} \tan{\delta}}{L} \
 \dot{\delta} = \omega \
@@ -78,10 +106,16 @@
         <div class="catalogue-line"></div>
 
         <p>
-            git log git status
-git add -A . git commit -m &ldquo;Initial commit&rdquo;
-git remote -v git remote remove origin git remote add origin https://github.com/stone0351/stone0351.github.io
-git push -u origin master git pull origin git merge origin/master
+            git log
+git status
+git add -A .
+git commit -m &lsquo;Initial commit&rsquo;
+git remote -v
+git remote remove origin
+git remote add origin https://github.com/stone0351/stone0351.github.io
+git push -u origin master
+git pull origin
+git merge origin/master
         </p>
     </div>
 </a>
@@ -100,7 +134,7 @@ git push -u origin master git pull origin git merge origin/master
         		<footer>
 			
 			<span>
-			&copy; <time datetime="2021-03-26 22:19:24.242411 -0700 PDT m=&#43;0.102821862">2021</time> Shi. CA
+			&copy; <time datetime="2021-03-27 00:06:26.396686 -0700 PDT m=&#43;0.100955509">2021</time> Shi. CA
 			</span>
 		</footer>
 

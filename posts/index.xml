@@ -13,7 +13,7 @@
       <pubDate>Fri, 26 Mar 2021 22:08:44 -0700</pubDate>
       
       <guid>https://blog.getmemap.com/posts/20210326/</guid>
-      <description>$$\begin{align*} \dot{x}_c = v \cos{(\theta + \beta)} \
+      <description>$$\begin{align*} \dot{x}_c = v \cos{(\theta + \beta)}\
 \dot{y}_c = v \sin{(\theta + \beta)} \
 \dot{\theta} = \frac{v \cos{\beta} \tan{\delta}}{L} \
 \dot{\delta} = \omega \
@@ -26,10 +26,16 @@
       <pubDate>Thu, 25 Mar 2021 19:35:34 -0700</pubDate>
       
       <guid>https://blog.getmemap.com/posts/20210325/</guid>
-      <description>git log git status
-git add -A . git commit -m &amp;ldquo;Initial commit&amp;rdquo;
-git remote -v git remote remove origin git remote add origin https://github.com/stone0351/stone0351.github.io
-git push -u origin master git pull origin git merge origin/master</description>
+      <description>git log
+git status
+git add -A .
+git commit -m &amp;lsquo;Initial commit&amp;rsquo;
+git remote -v
+git remote remove origin
+git remote add origin https://github.com/stone0351/stone0351.github.io
+git push -u origin master
+git pull origin
+git merge origin/master</description>
     </item>
     
   </channel>
