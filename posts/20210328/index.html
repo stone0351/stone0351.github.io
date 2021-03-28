@@ -6,7 +6,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	<title>Categories &middot; Shi&#39;s Gists and Reflection</title>
+	<title>Flutter Reflection &middot; Shi&#39;s Gists and Reflection</title>
 
 	
 	<link rel="stylesheet" href="/css/style.css">
@@ -79,13 +79,63 @@
 		</nav>
 
         
+
 <main>
-    <h1>Categories</h1>
-	<div class="catalogue">
-        <ul></ul>
+	<div class="post">
+		<div class="post-info">
+    <br>
+    <span>on&nbsp;</span><time datetime="2021-03-28 01:57:21 -0700 PDT">March 28, 2021</time>
+</div>
+		<h3 class="post-title">Flutter Reflection</h3>
+<div class="post-line"></div>
+
+		
+
+		<p><strong>Flutter RaisedButton: callback function</strong></p>
+<p>See below example:</p>
+<hr>
+<pre><code>int  result = 0;
+void calculate(num1, num2) {
+ setState(() {
+     result = num1 + num2;
+ });
+}
+new RaisedButton(
+      onPressed: () =&gt; calculate(1, 100),
+      ...
+),
+new Text(&quot;$result&quot;)
+</code></pre>
+<hr>
+<ol>
+<li>onPressed: calculate(1, 100),</li>
+</ol>
+<blockquote>
+<p>calculate(1, 100) will be called every time Flutter runs build()</p>
+</blockquote>
+<ol start="2">
+<li>onPressed: () =&gt; calculate(1, 100),</li>
+</ol>
+<blockquote>
+<p>The same as onPressed: () {calculate(1,100);}</p>
+<p>When the button pressed, then call back the function</p>
+</blockquote>
+<ol start="3">
+<li>onPressed: calculate,</li>
+</ol>
+<blockquote>
+<p>if the function has no parameters, When the button pressed, then call
+back the function.</p>
+</blockquote>
+
+
+		
 	</div>
-	
-	<div class="pagination"><span>1</span>
+
+	<div class="pagination">
+		<a href="/posts/20210326/" class="left arrow">&#8592;</a>
+
+		<a href="#" class="top">Top</a>
 	</div>
 </main>
 
@@ -93,7 +143,7 @@
         		<footer>
 			
 			<span>
-			&copy; <time datetime="2021-03-28 02:16:43.857219 -0700 PDT m=&#43;0.101949692">2021</time> Shi. CA
+			&copy; <time datetime="2021-03-28 02:16:43.850819 -0700 PDT m=&#43;0.095549231">2021</time> Shi. CA
 			</span>
 		</footer>
 

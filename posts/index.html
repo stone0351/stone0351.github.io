@@ -83,6 +83,22 @@
 <main>
 	<div class="catalogue">
 		
+			<a href="https://blog.getmemap.com/posts/20210328/" class="catalogue-item">
+    <div>
+        <time datetime="2021-03-28 01:57:21 -0700 PDT" class="catalogue-time">March 28, 2021</time>
+        <h4 class="catalogue-title">Flutter Reflection</h4>
+        <div class="catalogue-line"></div>
+
+        <p>
+            Flutter RaisedButton: callback function
+See below example:
+ int result = 0; void calculate(num1, num2) { setState(() { result = num1 + num2; }); } new RaisedButton( onPressed: () =&gt; calculate(1, 100), ... ), new Text(&quot;$result&quot;)    onPressed: calculate(1, 100),   calculate(1, 100) will be called every time Flutter runs build()
+ onPressed: () =&gt; calculate(1, 100),   The same as onPressed: () {calculate(1,100);}
+When the button pressed, then call back the function
+        </p>
+    </div>
+</a>
+		
 			<a href="https://blog.getmemap.com/posts/20210326/" class="catalogue-item">
     <div>
         <time datetime="2021-03-26 22:08:44 -0700 PDT" class="catalogue-time">March 26, 2021</time>
@@ -90,11 +106,12 @@
         <div class="catalogue-line"></div>
 
         <p>
-            $$\begin{align*} \dot{x}_c = v \cos{(\theta + \beta)}\
-\dot{y}_c = v \sin{(\theta + \beta)} \
-\dot{\theta} = \frac{v \cos{\beta} \tan{\delta}}{L} \
-\dot{\delta} = \omega \
-\beta = \tan^{-1}(\frac{l_r \tan{\delta}}{L}) \end{align*}$$ where the inputs are the bicycle speed $v$ and steering angle rate $\omega$. The input can also directly be the steering angle $\delta$ rather than its rate in the simplified case. The Python model will allow us both implementations. In order to create this model, it&rsquo;s a good idea to make use of Python class objects.
+            $\dot{x}_c = v \cos{(\theta + \beta)}$
+$\dot{y}_c = v \sin{(\theta + \beta)}$
+$\dot{\theta} = \frac{v \cos{\beta} \tan{\delta}}{L}$
+$\dot{\delta} = \omega$
+$\beta = \tan^{-1}(\frac{l_r \tan{\delta}}{L})$
+where the inputs are the bicycle speed $v$ and steering angle rate $\omega$. The input can also directly be the steering angle $\delta$ rather than its rate in the simplified case. The Python model will allow us both implementations. In order to create this model, it&rsquo;s a good idea to make use of Python class objects.
         </p>
     </div>
 </a>
@@ -134,7 +151,7 @@ git merge origin/master
         		<footer>
 			
 			<span>
-			&copy; <time datetime="2021-03-27 00:06:26.396686 -0700 PDT m=&#43;0.100955509">2021</time> Shi. CA
+			&copy; <time datetime="2021-03-28 02:16:43.859008 -0700 PDT m=&#43;0.103738333">2021</time> Shi. CA
 			</span>
 		</footer>
 
