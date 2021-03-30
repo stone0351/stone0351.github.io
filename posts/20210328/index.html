@@ -91,7 +91,7 @@
 
 		
 
-		<p><strong>Flutter RaisedButton: callback function</strong></p>
+		<p><em><strong>Flutter RaisedButton: callback function</strong></em></p>
 <p>See below example:</p>
 <hr>
 <pre><code>int  result = 0;
@@ -127,6 +127,23 @@ new Text(&quot;$result&quot;)
 <p>if the function has no parameters, When the button pressed, then call
 back the function.</p>
 </blockquote>
+<p>=======================================================================</p>
+<p><em><strong>Flutter builder: builder example</strong></em></p>
+<p>See below example:</p>
+<hr>
+<pre><code>showDialog(
+    context: context,
+    builder: new Builder(builder: (_) =&gt; myWidget),
+);
+
+equal to:
+
+showDialog(
+    context: context,
+    builder: (_) =&gt; myWidget,
+);
+</code></pre>
+<hr>
 
 
 		
@@ -143,7 +160,7 @@ back the function.</p>
         		<footer>
 			
 			<span>
-			&copy; <time datetime="2021-03-28 02:16:43.850819 -0700 PDT m=&#43;0.095549231">2021</time> Shi. CA
+			&copy; <time datetime="2021-03-29 22:24:05.591888 -0700 PDT m=&#43;0.114592330">2021</time> Shi. CA
 			</span>
 		</footer>
 
