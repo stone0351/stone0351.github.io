@@ -6,7 +6,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	<title>Flutter Reflection &middot; Shi&#39;s Gists and Reflection</title>
+	<title>Flutter Gists &middot; Shi&#39;s Gists and Reflection</title>
 
 	
 	<link rel="stylesheet" href="/css/style.css">
@@ -48,36 +48,37 @@
 <script type="text/javascript" id="MathJax-script" async
     src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
+	
+	<script async src="https://cse.google.com/cse.js?cx=a3bb25cf7c656deef"></script>
+
 </head>
     <body>
-        		<nav class="nav">
-			<div class="nav-container">
+        <nav class="nav">
+	<div class="nav-container">
+		<div class="nav-headbar">
+			<div>
 				<a href="/">
-					<h2 class="nav-title">Shi&#39;s Gists and Reflection</h2>
+					<h2 class="nav-title">Shi's Gists and Reflection</h2>
 				</a>
-				<ul>
-    
-    
-    <li>
-        <a href="https://github.com/stone0351">
-            
-            <span>MyGithub</span>
-            
-        </a>
-    </li>
-    
-    <li>
-        <a href="/posts/">
-            
-            <span>Posts</span>
-            
-        </a>
-    </li>
-    
-</ul>
 			</div>
-		</nav>
+			<div class="gcse-search"></div>
+		</div>
 
+		<ul>
+			<li>
+				<a href="https://github.com/stone0351">
+					<i class="fa fa-github"></i>
+					<span>MyGithub</span>
+				</a>
+			</li>
+			<li>
+				<a href="/posts/">
+					<span>Posts</span>
+				</a>
+			</li>
+		</ul>
+	</div>
+</nav>
         
 
 <main>
@@ -86,7 +87,7 @@
     <br>
     <span>on&nbsp;</span><time datetime="2021-03-28 01:57:21 -0700 PDT">March 28, 2021</time>
 </div>
-		<h3 class="post-title">Flutter Reflection</h3>
+		<h3 class="post-title">Flutter Gists</h3>
 <div class="post-line"></div>
 
 		
@@ -127,7 +128,7 @@ new Text(&quot;$result&quot;)
 <p>if the function has no parameters, When the button pressed, then call
 back the function.</p>
 </blockquote>
-<p>=======================================================================</p>
+<p>================================================================================</p>
 <p><em><strong>Flutter builder: builder example</strong></em></p>
 <p>See below example:</p>
 <hr>
@@ -144,6 +145,24 @@ showDialog(
 );
 </code></pre>
 <hr>
+<p>================================================================================</p>
+<p><em><strong>Flutter create a StatefulWidget example</strong></em></p>
+<hr>
+<pre><code>class MyApp extends StatefulWidget
+{
+@override
+// _myState here is actually a type, not a variable name.
+_myState createState() =&gt; _myState();
+}  
+
+equal to:
+
+@override
+_myState createState() {
+    return new _myState();
+}
+</code></pre>
+<hr>
 
 
 		
@@ -151,6 +170,7 @@ showDialog(
 
 	<div class="pagination">
 		<a href="/posts/20210326/" class="left arrow">&#8592;</a>
+		<a href="/posts/20210330/" class="right arrow">&#8594;</a>
 
 		<a href="#" class="top">Top</a>
 	</div>
@@ -160,7 +180,7 @@ showDialog(
         		<footer>
 			
 			<span>
-			&copy; <time datetime="2021-03-29 22:24:05.591888 -0700 PDT m=&#43;0.114592330">2021</time> Shi. CA
+			&copy; <time datetime="2021-03-30 15:51:39.920393 -0700 PDT m=&#43;0.106540397">2021</time> Shi. CA
 			</span>
 		</footer>
 

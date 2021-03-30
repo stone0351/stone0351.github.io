@@ -6,9 +6,22 @@
     <description>Recent content on Shi&#39;s Gists and Reflection</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 28 Mar 2021 01:57:21 -0700</lastBuildDate><atom:link href="https://blog.getmemap.com/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 30 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.getmemap.com/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Flutter Reflection</title>
+      <title>Flutter Gists</title>
+      <link>https://blog.getmemap.com/posts/20210330/</link>
+      <pubDate>Tue, 30 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.getmemap.com/posts/20210330/</guid>
+      <description>Flutter RaisedButton: callback function
+See below example:
+ int result = 0; void calculate(num1, num2) { setState(() { result = num1 + num2; }); } new RaisedButton( onPressed: () =&amp;gt; calculate(1, 100), ... ), new Text(&amp;quot;$result&amp;quot;)    onPressed: calculate(1, 100),   calculate(1, 100) will be called every time Flutter runs build()
+ onPressed: () =&amp;gt; calculate(1, 100),   The same as onPressed: () {calculate(1,100);}
+When the button pressed, then call back the function</description>
+    </item>
+    
+    <item>
+      <title>Flutter Gists</title>
       <link>https://blog.getmemap.com/posts/20210328/</link>
       <pubDate>Sun, 28 Mar 2021 01:57:21 -0700</pubDate>
       

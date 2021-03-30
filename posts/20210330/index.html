@@ -6,7 +6,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	<title>Git Commands Cheat Sheet &middot; Shi&#39;s Gists and Reflection</title>
+	<title>Flutter Gists &middot; Shi&#39;s Gists and Reflection</title>
 
 	
 	<link rel="stylesheet" href="/css/style.css">
@@ -85,30 +85,91 @@
 	<div class="post">
 		<div class="post-info">
     <br>
-    <span>on&nbsp;</span><time datetime="2021-03-25 19:35:34 -0700 PDT">March 25, 2021</time>
+    <span>on&nbsp;</span><time datetime="2021-03-30 00:00:00 &#43;0000 UTC">March 30, 2021</time>
 </div>
-		<h3 class="post-title">Git Commands Cheat Sheet</h3>
+		<h3 class="post-title">Flutter Gists</h3>
 <div class="post-line"></div>
 
 		
 
-		<p>git log</p>
-<p>git status</p>
-<p>git add -A .</p>
-<p>git commit -m &lsquo;Initial commit&rsquo;</p>
-<p>git remote -v</p>
-<p>git remote remove origin</p>
-<p>git remote add origin <a href="https://github.com/stone0351/stone0351.github.io">https://github.com/stone0351/stone0351.github.io</a></p>
-<p>git push -u origin master</p>
-<p>git pull origin</p>
-<p>git merge origin/master</p>
+		<p><em><strong>Flutter RaisedButton: callback function</strong></em></p>
+<p>See below example:</p>
+<hr>
+<pre><code>int  result = 0;
+void calculate(num1, num2) {
+ setState(() {
+     result = num1 + num2;
+ });
+}
+new RaisedButton(
+      onPressed: () =&gt; calculate(1, 100),
+      ...
+),
+new Text(&quot;$result&quot;)
+</code></pre>
+<hr>
+<ol>
+<li>onPressed: calculate(1, 100),</li>
+</ol>
+<blockquote>
+<p>calculate(1, 100) will be called every time Flutter runs build()</p>
+</blockquote>
+<ol start="2">
+<li>onPressed: () =&gt; calculate(1, 100),</li>
+</ol>
+<blockquote>
+<p>The same as onPressed: () {calculate(1,100);}</p>
+<p>When the button pressed, then call back the function</p>
+</blockquote>
+<ol start="3">
+<li>onPressed: calculate,</li>
+</ol>
+<blockquote>
+<p>if the function has no parameters, When the button pressed, then call
+back the function.</p>
+</blockquote>
+<p>================================================================================</p>
+<p><em><strong>Flutter builder: builder example</strong></em></p>
+<p>See below example:</p>
+<hr>
+<pre><code>showDialog(
+    context: context,
+    builder: new Builder(builder: (_) =&gt; myWidget),
+);
+
+equal to:
+
+showDialog(
+    context: context,
+    builder: (_) =&gt; myWidget,
+);
+</code></pre>
+<hr>
+<p>================================================================================</p>
+<p><em><strong>Flutter create a StatefulWidget example</strong></em></p>
+<hr>
+<pre><code>class MyApp extends StatefulWidget
+{
+@override
+// _myState here is actually a type, not a variable name.
+_myState createState() =&gt; _myState();
+}  
+
+equal to:
+
+@override
+_myState createState() {
+    return new _myState();
+}
+</code></pre>
+<hr>
 
 
 		
 	</div>
 
 	<div class="pagination">
-		<a href="/posts/20210326/" class="right arrow">&#8594;</a>
+		<a href="/posts/20210328/" class="left arrow">&#8592;</a>
 
 		<a href="#" class="top">Top</a>
 	</div>
@@ -118,7 +179,7 @@
         		<footer>
 			
 			<span>
-			&copy; <time datetime="2021-03-30 15:51:39.919789 -0700 PDT m=&#43;0.105936112">2021</time> Shi. CA
+			&copy; <time datetime="2021-03-30 15:51:39.919622 -0700 PDT m=&#43;0.105769543">2021</time> Shi. CA
 			</span>
 		</footer>
 

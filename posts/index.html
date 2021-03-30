@@ -48,45 +48,62 @@
 <script type="text/javascript" id="MathJax-script" async
     src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
+	
+	<script async src="https://cse.google.com/cse.js?cx=a3bb25cf7c656deef"></script>
+
 </head>
     <body>
-        		<nav class="nav">
-			<div class="nav-container">
+        <nav class="nav">
+	<div class="nav-container">
+		<div class="nav-headbar">
+			<div>
 				<a href="/">
-					<h2 class="nav-title">Shi&#39;s Gists and Reflection</h2>
+					<h2 class="nav-title">Shi's Gists and Reflection</h2>
 				</a>
-				<ul>
-    
-    
-    <li>
-        <a href="https://github.com/stone0351">
-            
-            <span>MyGithub</span>
-            
-        </a>
-    </li>
-    
-    <li>
-        <a href="/posts/">
-            
-            <span>Posts</span>
-            
-        </a>
-    </li>
-    
-</ul>
 			</div>
-		</nav>
+			<div class="gcse-search"></div>
+		</div>
 
+		<ul>
+			<li>
+				<a href="https://github.com/stone0351">
+					<i class="fa fa-github"></i>
+					<span>MyGithub</span>
+				</a>
+			</li>
+			<li>
+				<a href="/posts/">
+					<span>Posts</span>
+				</a>
+			</li>
+		</ul>
+	</div>
+</nav>
         
 
 <main>
 	<div class="catalogue">
 		
+			<a href="https://blog.getmemap.com/posts/20210330/" class="catalogue-item">
+    <div>
+        <time datetime="2021-03-30 00:00:00 &#43;0000 UTC" class="catalogue-time">March 30, 2021</time>
+        <h4 class="catalogue-title">Flutter Gists</h4>
+        <div class="catalogue-line"></div>
+
+        <p>
+            Flutter RaisedButton: callback function
+See below example:
+ int result = 0; void calculate(num1, num2) { setState(() { result = num1 + num2; }); } new RaisedButton( onPressed: () =&gt; calculate(1, 100), ... ), new Text(&quot;$result&quot;)    onPressed: calculate(1, 100),   calculate(1, 100) will be called every time Flutter runs build()
+ onPressed: () =&gt; calculate(1, 100),   The same as onPressed: () {calculate(1,100);}
+When the button pressed, then call back the function
+        </p>
+    </div>
+</a>
+		
 			<a href="https://blog.getmemap.com/posts/20210328/" class="catalogue-item">
     <div>
         <time datetime="2021-03-28 01:57:21 -0700 PDT" class="catalogue-time">March 28, 2021</time>
-        <h4 class="catalogue-title">Flutter Reflection</h4>
+        <h4 class="catalogue-title">Flutter Gists</h4>
         <div class="catalogue-line"></div>
 
         <p>
@@ -151,7 +168,7 @@ git merge origin/master
         		<footer>
 			
 			<span>
-			&copy; <time datetime="2021-03-29 22:24:05.604671 -0700 PDT m=&#43;0.127375382">2021</time> Shi. CA
+			&copy; <time datetime="2021-03-30 15:51:39.935125 -0700 PDT m=&#43;0.121271920">2021</time> Shi. CA
 			</span>
 		</footer>
 
