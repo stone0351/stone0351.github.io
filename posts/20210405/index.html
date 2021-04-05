@@ -6,7 +6,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	<title>Ubuntu Learning note &middot; Shi&#39;s Gists and Reflection</title>
+	<title>Ubuntu Learning Note &middot; Shi&#39;s Gists and Reflection</title>
 
 	
 	<link rel="stylesheet" href="/css/style.css">
@@ -87,7 +87,7 @@
     <br>
     <span>on&nbsp;</span><time datetime="2021-04-05 00:00:00 &#43;0000 UTC">April 5, 2021</time>
 </div>
-		<h3 class="post-title">Ubuntu Learning note</h3>
+		<h3 class="post-title">Ubuntu Learning Note</h3>
 <div class="post-line"></div>
 
 		
@@ -106,6 +106,7 @@ command.</p>
 <p>Here, the SSH login request sent to 127.0.0.1:2522 will automatically be
 translated into 10.0.2.15:22 by VirtualBox. Thus, we can now SSH to the
 guest VM.</p>
+<hr>
 <p>Method 2. Port forwarding from command line</p>
 <p>To create a port forwarding rule for guest VM named &ldquo;Centos&rdquo; with IP
 address 10.0.2.15 and SSH port 22, mapped to local host at port 2522,
@@ -117,7 +118,35 @@ use the command:</p>
 <p>VBoxManage showvminfo &quot;Centos&quot; | grep NIC</p>
 <p>And, this will show the rule in the results.</p>
 <p>================================================================================</p>
-<p><em><strong>End</strong></em></p>
+<p><em><strong>Install SSh on Ubuntu</strong></em></p>
+<p>Let's start to install openssh-server.<br>
+First update the system</p>
+<p>$ sudo apt update</p>
+<p>$ sudo apt upgrade</p>
+<p>To install openssh-server package, run:</p>
+<p>$ sudo apt install openssh-server</p>
+<p>Once installed, the SSH service should be started automatically. If
+necessary, you can start (or stop, restart) the service manually via
+command:</p>
+<p>$ sudo service ssh start</p>
+<p>Verify that ssh service running</p>
+<p>$ sudo systemctl status ssh</p>
+<p><img src="/images/sshstatus.png" alt="">{width=&ldquo;6.5in&rdquo; height=&ldquo;2.161111111111111in&rdquo;}</p>
+<p><strong>Configure firewall and open port 22</strong></p>
+<p>Before enabling the UFW firewall we need to add a rule which will allow
+incoming SSH connections. If you&rsquo;re connecting to your server from a
+remote location, which is almost always the case and you enable the UFW
+firewall before explicitly allow incoming SSH connections you will no
+longer be able to connect to your Ubuntu server.</p>
+<p>To configure your UFW firewall to allow incoming SSH connections, type
+the following command:</p>
+<p>$ sudo ufw allow ssh</p>
+<p>Now we can enable UFW firewall by typing:</p>
+<p>$ sudo ufw enable</p>
+<p>You can check the status of UFW with the following command:</p>
+<p>$ sudo ufw status</p>
+<p>================================================================================
+<em><strong>End</strong></em></p>
 
 
 		
@@ -134,7 +163,7 @@ use the command:</p>
         		<footer>
 			
 			<span>
-			&copy; <time datetime="2021-04-05 14:07:07.530075 -0700 PDT m=&#43;0.080348676">2021</time> Shi. CA
+			&copy; <time datetime="2021-04-05 14:37:08.646935 -0700 PDT m=&#43;0.249884547">2021</time> Shi. CA
 			</span>
 		</footer>
 
