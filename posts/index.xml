@@ -6,18 +6,22 @@
     <description>Recent content in Posts on Shi&#39;s Gists and Reflection</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 30 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.getmemap.com/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 05 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.getmemap.com/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Flutter Gists</title>
-      <link>https://blog.getmemap.com/posts/20210330/</link>
-      <pubDate>Tue, 30 Mar 2021 00:00:00 +0000</pubDate>
+      <title>Ubuntu learning note</title>
+      <link>https://blog.getmemap.com/posts/20210405/</link>
+      <pubDate>Mon, 05 Apr 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://blog.getmemap.com/posts/20210330/</guid>
-      <description>Flutter RaisedButton: callback function
-See below example:
- int result = 0; void calculate(num1, num2) { setState(() { result = num1 + num2; }); } new RaisedButton( onPressed: () =&amp;gt; calculate(1, 100), ... ), new Text(&amp;quot;$result&amp;quot;)    onPressed: calculate(1, 100),   calculate(1, 100) will be called every time Flutter runs build()
- onPressed: () =&amp;gt; calculate(1, 100),   The same as onPressed: () {calculate(1,100);}
-When the button pressed, then call back the function</description>
+      <guid>https://blog.getmemap.com/posts/20210405/</guid>
+      <description>SSh Into Ubuntu VM Virtualbox
+Method 1. Port forwarding from GUI
+For the guest VM, then open &amp;ldquo;Settings&amp;rdquo; &amp;gt;&amp;gt; &amp;ldquo;Network&amp;rdquo; &amp;gt;&amp;gt; &amp;ldquo;Advanced&amp;rdquo; section.
+Click on &amp;ldquo;Port Forwarding&amp;rdquo; button, add a new port forwarding rule.
+For example, set up the rule from the panel as
+{width=&amp;ldquo;6.5in&amp;rdquo; height=&amp;ldquo;3.479861111111111in&amp;rdquo;}
+To confirm that port 2522 is listening, we check using the netstat command.
+Now, we can SSH to the guest VM using
+ssh -p 2522 &amp;lt;login&amp;gt;@127.</description>
     </item>
     
     <item>

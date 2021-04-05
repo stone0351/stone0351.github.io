@@ -6,7 +6,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	<title>Categories &middot; Shi&#39;s Gists and Reflection</title>
+	<title>Ubuntu learning note &middot; Shi&#39;s Gists and Reflection</title>
 
 	
 	<link rel="stylesheet" href="/css/style.css">
@@ -80,13 +80,53 @@
 	</div>
 </nav>
         
+
 <main>
-    <h1>Categories</h1>
-	<div class="catalogue">
-        <ul></ul>
+	<div class="post">
+		<div class="post-info">
+    <br>
+    <span>on&nbsp;</span><time datetime="2021-04-05 00:00:00 &#43;0000 UTC">April 5, 2021</time>
+</div>
+		<h3 class="post-title">Ubuntu learning note</h3>
+<div class="post-line"></div>
+
+		
+
+		<p><em><strong>SSh Into Ubuntu VM Virtualbox</strong></em></p>
+<p>Method 1. Port forwarding from GUI</p>
+<p>For the guest VM, then open &ldquo;Settings&rdquo; &gt;&gt; &ldquo;Network&rdquo; &gt;&gt; &ldquo;Advanced&rdquo;
+section.</p>
+<p>Click on &ldquo;Port Forwarding&rdquo; button, add a new port forwarding rule.</p>
+<p>For example, set up the rule from the panel as</p>
+<p><img src="images/natportforwarding.png" alt="">{width=&ldquo;6.5in&rdquo; height=&ldquo;3.479861111111111in&rdquo;}</p>
+<p>To confirm that port 2522 is listening, we check using the netstat
+command.</p>
+<p>Now, we can SSH to the guest VM using</p>
+<p>ssh -p 2522 &lt;login&gt;@127.0.0.1</p>
+<p>Here, the SSH login request sent to 127.0.0.1:2522 will automatically be
+translated into 10.0.2.15:22 by VirtualBox. Thus, we can now SSH to the
+guest VM.</p>
+<p>Method 2. Port forwarding from command line</p>
+<p>To create a port forwarding rule for guest VM named &ldquo;Centos&rdquo; with IP
+address 10.0.2.15 and SSH port 22, mapped to local host at port 2522,
+use the command:</p>
+<p>VBoxManage modifyvm &quot;Centos&quot; --natpf1</p>
+<p>&quot;SSH,tcp,127.0.0.1,2522,10.0.2.15,22&quot;</p>
+<p>Here, the name of the rule should be set as unique.</p>
+<p>After creating the rule, we verify it using</p>
+<p>VBoxManage showvminfo &quot;Centos&quot; | grep NIC</p>
+<p>And, this will show the rule in the results.</p>
+<p>================================================================================</p>
+<p><em><strong>End</strong></em></p>
+
+
+		
 	</div>
-	
-	<div class="pagination"><span>1</span>
+
+	<div class="pagination">
+		<a href="/posts/20210328/" class="left arrow">&#8592;</a>
+
+		<a href="#" class="top">Top</a>
 	</div>
 </main>
 
@@ -94,7 +134,7 @@
         		<footer>
 			
 			<span>
-			&copy; <time datetime="2021-04-05 13:57:41.008709 -0700 PDT m=&#43;0.105450753">2021</time> Shi. CA
+			&copy; <time datetime="2021-04-05 13:57:40.99837 -0700 PDT m=&#43;0.095110790">2021</time> Shi. CA
 			</span>
 		</footer>
 

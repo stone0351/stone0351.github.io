@@ -89,18 +89,22 @@
 
 	<div class="catalogue">
 		
-			<a href="https://blog.getmemap.com/posts/20210330/" class="catalogue-item">
+			<a href="https://blog.getmemap.com/posts/20210405/" class="catalogue-item">
     <div>
-        <time datetime="2021-03-30 00:00:00 &#43;0000 UTC" class="catalogue-time">March 30, 2021</time>
-        <h4 class="catalogue-title">Flutter Gists</h4>
+        <time datetime="2021-04-05 00:00:00 &#43;0000 UTC" class="catalogue-time">April 5, 2021</time>
+        <h4 class="catalogue-title">Ubuntu learning note</h4>
         <div class="catalogue-line"></div>
 
         <p>
-            Flutter RaisedButton: callback function
-See below example:
- int result = 0; void calculate(num1, num2) { setState(() { result = num1 + num2; }); } new RaisedButton( onPressed: () =&gt; calculate(1, 100), ... ), new Text(&quot;$result&quot;)    onPressed: calculate(1, 100),   calculate(1, 100) will be called every time Flutter runs build()
- onPressed: () =&gt; calculate(1, 100),   The same as onPressed: () {calculate(1,100);}
-When the button pressed, then call back the function
+            SSh Into Ubuntu VM Virtualbox
+Method 1. Port forwarding from GUI
+For the guest VM, then open &ldquo;Settings&rdquo; &gt;&gt; &ldquo;Network&rdquo; &gt;&gt; &ldquo;Advanced&rdquo; section.
+Click on &ldquo;Port Forwarding&rdquo; button, add a new port forwarding rule.
+For example, set up the rule from the panel as
+{width=&ldquo;6.5in&rdquo; height=&ldquo;3.479861111111111in&rdquo;}
+To confirm that port 2522 is listening, we check using the netstat command.
+Now, we can SSH to the guest VM using
+ssh -p 2522 &lt;login&gt;@127.
         </p>
     </div>
 </a>
@@ -173,7 +177,7 @@ git merge origin/master
         		<footer>
 			
 			<span>
-			&copy; <time datetime="2021-04-01 16:06:06.1516 -0700 PDT m=&#43;0.160010733">2021</time> Shi. CA
+			&copy; <time datetime="2021-04-05 13:57:41.018777 -0700 PDT m=&#43;0.115519055">2021</time> Shi. CA
 			</span>
 		</footer>
 
