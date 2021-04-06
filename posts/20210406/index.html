@@ -6,7 +6,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	<title>Git Commands Cheat Sheet &middot; Shi&#39;s Gists and Reflection</title>
+	<title>ROS2 Learning Note &middot; Shi&#39;s Gists and Reflection</title>
 
 	
 	<link rel="stylesheet" href="/css/style.css">
@@ -78,30 +78,45 @@
 	<div class="post">
 		<div class="post-info">
     <br>
-    <span>on&nbsp;</span><time datetime="2021-03-25 19:35:34 -0700 PDT">March 25, 2021</time>
+    <span>on&nbsp;</span><time datetime="2021-04-06 00:00:00 &#43;0000 UTC">April 6, 2021</time>
 </div>
-		<h3 class="post-title">Git Commands Cheat Sheet</h3>
+		<h3 class="post-title">ROS2 Learning Note</h3>
 <div class="post-line"></div>
 
 		
 
-		<p>git log</p>
-<p>git status</p>
-<p>git add -A .</p>
-<p>git commit -m &lsquo;Initial commit&rsquo;</p>
-<p>git remote -v</p>
-<p>git remote remove origin</p>
-<p>git remote add origin <a href="https://github.com/stone0351/stone0351.github.io">https://github.com/stone0351/stone0351.github.io</a></p>
-<p>git push -u origin master</p>
-<p>git pull origin</p>
-<p>git merge origin/master</p>
+		<p><em><strong>Install ROS2 on Ubuntu</strong></em></p>
+<p>$ sudo apt update</p>
+<p>$ sudo apt upgrade</p>
+<p>$ sudo apt install build-essential gcc make perl dkms</p>
+<p>VirtualBox VM=&gt;Device =&gt;Insert Guest Additional CD Image</p>
+<p>Then click run, after installation finished, restart the VM</p>
+<p>If error like VBoxGuestAdditions.iso' (VERR_PDM_MEDIA_LOCKED)</p>
+<p>Shut down all your VMs. And I don't mean &quot;Saved State&quot; or &quot;Paused&quot;,
+but completely shut them down. If you already have them in &quot;Saved
+State&quot; or &quot;Paused&quot;, then resume the VM and from within the guest OS
+shutdown the guest OS.</p>
+<p>Then go to the menu File » Virtual Media Manager » Optical Disks » find
+the VBoxGuestAdditions.iso » select it and from the toolbar click (if
+enabled) the &quot;Release&quot; button, and then the &quot;Remove&quot; button.</p>
+<p>follow the guide <a href="https://docs.ros.org/en/foxy/Installation.html">https://docs.ros.org/en/foxy/Installation.html</a></p>
+<p>after install the ROS2, cd to /opt/ros/foxy</p>
+<p>$ source setup.bash</p>
+<p>Every time open a terminal, need to do source, like below</p>
+<p>$ source /opt/ros/foxy/setup.bash</p>
+<p>In order to avoiding that, we can do:</p>
+<p>$ cd ~</p>
+<p>$ gedit .bashrc</p>
+<p>Add &ldquo;source /opt/ros/foxy/setup.bash&rdquo; at the bottom of .bashrc</p>
+<p>================================================================================</p>
+<p><em><strong>End</strong></em></p>
 
 
 		
 	</div>
 
 	<div class="pagination">
-		<a href="/posts/20210326/" class="right arrow">&#8594;</a>
+		<a href="/posts/20210405/" class="left arrow">&#8592;</a>
 
 		<a href="#" class="top">Top</a>
 	</div>
@@ -111,7 +126,7 @@
         		<footer>
 			
 			<span>
-			&copy; <time datetime="2021-04-05 18:27:32.205011 -0700 PDT m=&#43;0.245845556">2021</time> Shi. CA
+			&copy; <time datetime="2021-04-05 18:27:32.208506 -0700 PDT m=&#43;0.249340866">2021</time> Shi. CA
 			</span>
 		</footer>
 

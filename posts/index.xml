@@ -6,7 +6,23 @@
     <description>Recent content in Posts on Shi&#39;s Gists and Reflection</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 05 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.getmemap.com/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 06 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.getmemap.com/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ROS2 Learning Note</title>
+      <link>https://blog.getmemap.com/posts/20210406/</link>
+      <pubDate>Tue, 06 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.getmemap.com/posts/20210406/</guid>
+      <description>Install ROS2 on Ubuntu
+$ sudo apt update
+$ sudo apt upgrade
+$ sudo apt install build-essential gcc make perl dkms
+VirtualBox VM=&amp;gt;Device =&amp;gt;Insert Guest Additional CD Image
+Then click run, after installation finished, restart the VM
+If error like VBoxGuestAdditions.iso&#39; (VERR_PDM_MEDIA_LOCKED)
+Shut down all your VMs. And I don&#39;t mean &amp;quot;Saved State&amp;quot; or &amp;quot;Paused&amp;quot;, but completely shut them down. If you already have them in &amp;quot;Saved State&amp;quot; or &amp;quot;Paused&amp;quot;, then resume the VM and from within the guest OS shutdown the guest OS.</description>
+    </item>
+    
     <item>
       <title>Ubuntu Learning Note</title>
       <link>https://blog.getmemap.com/posts/20210405/</link>
