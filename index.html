@@ -90,10 +90,7 @@
 
         <p>
             Install ROS2 on Ubuntu
-$ sudo apt update
-$ sudo apt upgrade
-$ sudo apt install build-essential gcc make perl dkms
-VirtualBox VM=&gt;Device =&gt;Insert Guest Additional CD Image
+\$ sudo apt update \$ sudo apt upgrade \$ sudo apt install build-essential gcc make perl dkms  VirtualBox VM=&gt;Device =&gt;Insert Guest Additional CD Image
 Then click run, after installation finished, restart the VM
 If error like VBoxGuestAdditions.iso' (VERR_PDM_MEDIA_LOCKED)
 Shut down all your VMs. And I don't mean &quot;Saved State&quot; or &quot;Paused&quot;, but completely shut them down. If you already have them in &quot;Saved State&quot; or &quot;Paused&quot;, then resume the VM and from within the guest OS shutdown the guest OS.
@@ -104,7 +101,7 @@ Shut down all your VMs. And I don't mean &quot;Saved State&quot; or &quot;Paused
 			<a href="https://blog.getmemap.com/posts/20210405/" class="catalogue-item">
     <div>
         <time datetime="2021-04-05 00:00:00 &#43;0000 UTC" class="catalogue-time">April 5, 2021</time>
-        <h4 class="catalogue-title">Ubuntu Set Up</h4>
+        <h4 class="catalogue-title">Ubuntu Setup Note</h4>
         <div class="catalogue-line"></div>
 
         <p>
@@ -113,10 +110,9 @@ Method 1. Port forwarding from GUI
 For the guest VM, then open &ldquo;Settings&rdquo; &gt;&gt; &ldquo;Network&rdquo; &gt;&gt; &ldquo;Advanced&rdquo; section.
 Click on &ldquo;Port Forwarding&rdquo; button, add a new port forwarding rule.
 For example, set up the rule from the panel as
-{width=&ldquo;6.5in&rdquo; height=&ldquo;3.479861111111111in&rdquo;}
 To confirm that port 2522 is listening, we check using the netstat command.
 Now, we can SSH to the guest VM using
-ssh -p 2522 &lt;login&gt;@127.
+ssh -p 2522 &lt;login&gt;@127.0.0.1
         </p>
     </div>
 </a>
@@ -194,7 +190,7 @@ End
         		<footer>
 			
 			<span>
-			&copy; <time datetime="2021-04-06 00:58:39.256466 -0700 PDT m=&#43;0.111963460">2021</time> Shi. CA
+			&copy; <time datetime="2021-04-06 15:31:05.170299 -0700 PDT m=&#43;0.111001952">2021</time> Shi. CA
 			</span>
 		</footer>
 

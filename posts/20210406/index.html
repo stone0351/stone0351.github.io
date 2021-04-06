@@ -86,9 +86,10 @@
 		
 
 		<p><em><strong>Install ROS2 on Ubuntu</strong></em></p>
-<p>$ sudo apt update</p>
-<p>$ sudo apt upgrade</p>
-<p>$ sudo apt install build-essential gcc make perl dkms</p>
+<pre><code>\$ sudo apt update
+\$ sudo apt upgrade
+\$ sudo apt install build-essential gcc make perl dkms
+</code></pre>
 <p>VirtualBox VM=&gt;Device =&gt;Insert Guest Additional CD Image</p>
 <p>Then click run, after installation finished, restart the VM</p>
 <p>If error like VBoxGuestAdditions.iso' (VERR_PDM_MEDIA_LOCKED)</p>
@@ -112,24 +113,27 @@ enabled) the &quot;Release&quot; button, and then the &quot;Remove&quot; button.
 <p>Add &ldquo;source /usr/share/colcon_argcomplete/hook/colcon-argcomplete.bash&rdquo; at the bottom of .bashrc</p>
 <p>================================================================================</p>
 <p><em><strong>Create ROS2 workspace</strong></em></p>
-<p><img src="/images/createwkspace.png" alt="">{width=&ldquo;5.400877077865267in&rdquo;
-height=&ldquo;2.8604647856517937in&rdquo;}</p>
-<p>Add &quot;source ~/ros2_ws/install/setup.bash&quot; at the bottom of ~/.bashrc</p>
-<p>//create a Python package</p>
-<p>﻿sz@sz-VirtualBox:~/ros2_ws/src$ ros2 pkg create my_py_pkg
---build-type ament_python --dependencies rclpy</p>
-<p>// use colcon to compile all package in the workspace folder</p>
-<p>﻿sz@sz-VirtualBox:~/ros2_ws$ colcon build</p>
-<p>// use colcon to compile the Python package</p>
-<p>﻿sz@sz-VirtualBox:~/ros2_ws$ colcon build --packages-select
-my_py_pkg</p>
-<p>//create a C++ package</p>
-<p>﻿sz@sz-VirtualBox:~/ros2_ws/src$ ros2 pkg create my_cpp_pkg
---build-type ament_cmake --dependencies rclcpp</p>
-<p>// use colcon to compile the C++ package</p>
-<p>﻿sz@sz-VirtualBox:~/ros2_ws$ colcon build --packages-select
-my_cpp_pkg</p>
-<p><img src="/images/createcpppkg.png" alt="">{width=&ldquo;6.5in&rdquo; height=&ldquo;2.6680555555555556in&rdquo;}</p>
+<p><img src="/images/createwkspace.png" alt=""></p>
+<pre><code>Add &quot;source ~/ros2_ws/install/setup.bash&quot; at the bottom of ~/.bashrc
+
+//create a Python package
+sz@sz-VirtualBox:~/ros2_ws/src$ ros2 pkg create my_py_pkg --build-type ament_python --dependencies rclpy
+
+// use colcon to compile all package in the workspace folder
+sz@sz-VirtualBox:~/ros2_ws$ colcon build
+
+// use colcon to compile the Python package
+sz@sz-VirtualBox:~/ros2_ws$ colcon build --packages-select my_py_pkg
+
+//create a C++ package
+sz@sz-VirtualBox:~/ros2_ws/src$ ros2 pkg create my_cpp_pkg --build-type ament_cmake --dependencies rclcpp
+
+// use colcon to compile the C++ package
+sz@sz-VirtualBox:~/ros2_ws$ colcon build --packages-select my_cpp_pkg
+</code></pre>
+<p><img src="/images/createcpppkg.png" alt=""></p>
+<p>================================================================================</p>
+<p><em><strong>End</strong></em></p>
 <p>================================================================================</p>
 <p><em><strong>End</strong></em></p>
 
@@ -148,7 +152,7 @@ my_cpp_pkg</p>
         		<footer>
 			
 			<span>
-			&copy; <time datetime="2021-04-06 00:58:39.237957 -0700 PDT m=&#43;0.093454497">2021</time> Shi. CA
+			&copy; <time datetime="2021-04-06 15:31:05.161256 -0700 PDT m=&#43;0.101958848">2021</time> Shi. CA
 			</span>
 		</footer>
 

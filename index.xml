@@ -14,17 +14,14 @@
       
       <guid>https://blog.getmemap.com/posts/20210406/</guid>
       <description>Install ROS2 on Ubuntu
-$ sudo apt update
-$ sudo apt upgrade
-$ sudo apt install build-essential gcc make perl dkms
-VirtualBox VM=&amp;gt;Device =&amp;gt;Insert Guest Additional CD Image
+\$ sudo apt update \$ sudo apt upgrade \$ sudo apt install build-essential gcc make perl dkms  VirtualBox VM=&amp;gt;Device =&amp;gt;Insert Guest Additional CD Image
 Then click run, after installation finished, restart the VM
 If error like VBoxGuestAdditions.iso&#39; (VERR_PDM_MEDIA_LOCKED)
 Shut down all your VMs. And I don&#39;t mean &amp;quot;Saved State&amp;quot; or &amp;quot;Paused&amp;quot;, but completely shut them down. If you already have them in &amp;quot;Saved State&amp;quot; or &amp;quot;Paused&amp;quot;, then resume the VM and from within the guest OS shutdown the guest OS.</description>
     </item>
     
     <item>
-      <title>Ubuntu Set Up</title>
+      <title>Ubuntu Setup Note</title>
       <link>https://blog.getmemap.com/posts/20210405/</link>
       <pubDate>Mon, 05 Apr 2021 00:00:00 +0000</pubDate>
       
@@ -34,10 +31,9 @@ Method 1. Port forwarding from GUI
 For the guest VM, then open &amp;ldquo;Settings&amp;rdquo; &amp;gt;&amp;gt; &amp;ldquo;Network&amp;rdquo; &amp;gt;&amp;gt; &amp;ldquo;Advanced&amp;rdquo; section.
 Click on &amp;ldquo;Port Forwarding&amp;rdquo; button, add a new port forwarding rule.
 For example, set up the rule from the panel as
-{width=&amp;ldquo;6.5in&amp;rdquo; height=&amp;ldquo;3.479861111111111in&amp;rdquo;}
 To confirm that port 2522 is listening, we check using the netstat command.
 Now, we can SSH to the guest VM using
-ssh -p 2522 &amp;lt;login&amp;gt;@127.</description>
+ssh -p 2522 &amp;lt;login&amp;gt;@127.0.0.1</description>
     </item>
     
     <item>
