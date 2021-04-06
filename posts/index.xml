@@ -24,7 +24,7 @@ Shut down all your VMs. And I don&#39;t mean &amp;quot;Saved State&amp;quot; or 
     </item>
     
     <item>
-      <title>Ubuntu Learning Note</title>
+      <title>Ubuntu Set Up</title>
       <link>https://blog.getmemap.com/posts/20210405/</link>
       <pubDate>Mon, 05 Apr 2021 00:00:00 +0000</pubDate>
       
@@ -68,7 +68,7 @@ where the inputs are the bicycle speed $v$ and steering angle rate $\omega$. The
     </item>
     
     <item>
-      <title>Git Commands Cheat Sheet</title>
+      <title>Git and Hugo Common Commands</title>
       <link>https://blog.getmemap.com/posts/20210325/</link>
       <pubDate>Thu, 25 Mar 2021 19:35:34 -0700</pubDate>
       
@@ -82,7 +82,12 @@ git remote remove origin
 git remote add origin https://github.com/stone0351/stone0351.github.io
 git push -u origin master
 git pull origin
-git merge origin/master</description>
+git merge origin/master
+ hugo server &amp;ndash;disableFastRender
+// update the public files
+hugo -t &amp;lt;theme name&amp;gt;
+================================================================================
+End</description>
     </item>
     
   </channel>
