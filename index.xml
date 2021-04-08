@@ -6,7 +6,17 @@
     <description>Recent content on Shi&#39;s Gists and Reflection</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 06 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.getmemap.com/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 07 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.getmemap.com/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>C&#43;&#43; Learning Note</title>
+      <link>https://blog.getmemap.com/posts/20210407/</link>
+      <pubDate>Wed, 07 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.getmemap.com/posts/20210407/</guid>
+      <description>C++ program to demonstrate shared_ptr
+#include &amp;lt;iostream&amp;gt; #include &amp;lt;memory&amp;gt; using namespace std; class A { public: void show() { cout &amp;lt;&amp;lt; &amp;quot;A::show1()&amp;quot; &amp;lt;&amp;lt; endl; } }; int main() { shared_ptr&amp;lt;A&amp;gt; p1(new A); cout &amp;lt;&amp;lt; &amp;quot;after p1 created, p1.use_count()=&amp;quot; &amp;lt;&amp;lt; p1.use_count() &amp;lt;&amp;lt; endl; cout &amp;lt;&amp;lt; &amp;quot;p1.get()=&amp;quot; &amp;lt;&amp;lt; p1.get() &amp;lt;&amp;lt; endl; p1-&amp;gt;show(); shared_ptr&amp;lt;A&amp;gt; p2(p1); cout &amp;lt;&amp;lt; &amp;quot;after shared_ptr&amp;lt;A&amp;gt; p2(p1), p2=&amp;quot; &amp;lt;&amp;lt; p2 &amp;lt;&amp;lt; endl; cout &amp;lt;&amp;lt; &amp;quot;after p2 created, p1.use_count()=&amp;quot; &amp;lt;&amp;lt; p1.use_count() &amp;lt;&amp;lt; endl; cout &amp;lt;&amp;lt; &amp;quot;after p2 created, p2.</description>
+    </item>
+    
     <item>
       <title>ROS2 Learning Note</title>
       <link>https://blog.getmemap.com/posts/20210406/</link>

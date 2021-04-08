@@ -77,6 +77,19 @@
 <main>
 	<div class="catalogue">
 		
+			<a href="https://blog.getmemap.com/posts/20210407/" class="catalogue-item">
+    <div>
+        <time datetime="2021-04-07 00:00:00 &#43;0000 UTC" class="catalogue-time">April 7, 2021</time>
+        <h4 class="catalogue-title">C&#43;&#43; Learning Note</h4>
+        <div class="catalogue-line"></div>
+
+        <p>
+            C++ program to demonstrate shared_ptr
+#include &lt;iostream&gt; #include &lt;memory&gt; using namespace std; class A { public: void show() { cout &lt;&lt; &quot;A::show1()&quot; &lt;&lt; endl; } }; int main() { shared_ptr&lt;A&gt; p1(new A); cout &lt;&lt; &quot;after p1 created, p1.use_count()=&quot; &lt;&lt; p1.use_count() &lt;&lt; endl; cout &lt;&lt; &quot;p1.get()=&quot; &lt;&lt; p1.get() &lt;&lt; endl; p1-&gt;show(); shared_ptr&lt;A&gt; p2(p1); cout &lt;&lt; &quot;after shared_ptr&lt;A&gt; p2(p1), p2=&quot; &lt;&lt; p2 &lt;&lt; endl; cout &lt;&lt; &quot;after p2 created, p1.use_count()=&quot; &lt;&lt; p1.use_count() &lt;&lt; endl; cout &lt;&lt; &quot;after p2 created, p2.
+        </p>
+    </div>
+</a>
+		
 			<a href="https://blog.getmemap.com/posts/20210406/" class="catalogue-item">
     <div>
         <time datetime="2021-04-06 00:00:00 &#43;0000 UTC" class="catalogue-time">April 6, 2021</time>
@@ -185,7 +198,7 @@ End
         		<footer>
 			
 			<span>
-			&copy; <time datetime="2021-04-07 10:27:23.603287 -0700 PDT m=&#43;0.226976985">2021</time> Shi. CA
+			&copy; <time datetime="2021-04-07 18:08:57.87432 -0700 PDT m=&#43;0.240457373">2021</time> Shi. CA
 			</span>
 		</footer>
 
