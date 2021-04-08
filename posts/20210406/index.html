@@ -133,8 +133,8 @@ sz@sz-VirtualBox:~/ros2_ws$ colcon build --packages-select my_cpp_pkg
 </code></pre>
 <p><img src="/images/createcpppkg.png" alt=""></p>
 <p>================================================================================</p>
-<p><em><strong>Create ROS Node</strong></em></p>
-<pre><code>// create node.py
+<p><em><strong>Create ROS Node by Python</strong></em></p>
+<pre><code>// Create my_first_node.py
 sz@sz-VirtualBox:~/ros2_ws/src/my_py_pkg/my_py_pkg$ touch my_first_node.py
 ------------------------------------------
 #!/usr/bin/env python3
@@ -201,7 +201,44 @@ sz@sz-VirtualBox:~$ ros2 run my_py_pkg py_node
 [INFO] [1617752823.005040235] [py_test]: Hello ROS2
 </code></pre>
 <p>================================================================================</p>
-<p><em><strong>End</strong></em></p>
+<p><em><strong>Create ROS Node by C++</strong></em></p>
+<pre><code>// Create my_first_node.cpp
+sz@sz-VirtualBox:~/ros2_ws/src/my_cpp_pkg/src$ touch my_first_node.cpp
+------------------------------------------
+// need to edit c_cpp_properties.json first include the path
+#include &quot;rclcpp/rclcpp.hpp&quot;
+
+int main(int argc, char **argv)
+{
+    rclcpp::init(argc, argv);
+
+    //node is shared_ptr, better to use &quot;std::&quot; than &quot;using namespace std;&quot;
+    //make_shared created the Node class instance and node shared_ptr at one time
+    auto node = std::make_shared&lt;rclcpp::Node&gt;(&quot;cpp_test&quot;);
+    RCLCPP_INFO(node-&gt;get_logger(), &quot;Hello Cpp Node&quot;);
+    // spin() need to input the Node class shared_ptr
+    rclcpp::spin(node);
+    rclcpp::shutdown();
+    return 0;
+}
+------------------------------------------
+
+// Add below code to CMakeList.txt
+------------------------------------------
+add_executable(cpp_node src/my_first_node.cpp)
+ament_target_dependencies(cpp_node rclcpp)
+
+install(TARGETS
+cpp_node
+DESTINATION lib/${PROJECT_NAME}
+)
+------------------------------------------
+
+// Build the executable &quot;cpp_node&quot;
+sz@sz-VirtualBox:~/ros2_ws$ colcon build --packages-select my_cpp_pkg
+// Run the &quot;cpp_node&quot;
+sz@sz-VirtualBox:~/ros2_ws$ ros2 run my_cpp_pkg cpp_node
+</code></pre>
 <p>================================================================================</p>
 <p><em><strong>End</strong></em></p>
 
@@ -221,7 +258,7 @@ sz@sz-VirtualBox:~$ ros2 run my_py_pkg py_node
         		<footer>
 			
 			<span>
-			&copy; <time datetime="2021-04-07 18:08:57.862983 -0700 PDT m=&#43;0.229120339">2021</time> Shi. CA
+			&copy; <time datetime="2021-04-07 18:27:20.370708 -0700 PDT m=&#43;0.136192013">2021</time> Shi. CA
 			</span>
 		</footer>
 
