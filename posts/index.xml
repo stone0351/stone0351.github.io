@@ -6,7 +6,20 @@
     <description>Recent content in Posts on Shi&#39;s Gists and Reflection</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 07 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.getmemap.com/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 16 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.getmemap.com/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Kalman Filter Learning Note</title>
+      <link>https://blog.getmemap.com/posts/20210416/</link>
+      <pubDate>Fri, 16 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.getmemap.com/posts/20210416/</guid>
+      <description>Algebra Formula
+================================================================================
+Linear Algebra Formula
+@&amp;quot;after p1 created, p1.use_count()=1\r\n&amp;quot; @&amp;quot;p1.get()=0x100205410\r\n&amp;quot; @&amp;quot;A::show1()\r\n&amp;quot; @&amp;quot;after shared_ptr&amp;lt;A&amp;gt; p2(p1), p2=0x100205410\r\n&amp;quot; @&amp;quot;after p2 created, p1.use_count()=2\r\n&amp;quot; @&amp;quot;after p2 created, p2.use_count()=2\r\n&amp;quot; @&amp;quot;A::show1()\r\n&amp;quot; @&amp;quot;after p1.reset(), p1=0x0\r\n&amp;quot; @&amp;quot;after p1.reset(), p1.use_count()=0\r\n&amp;quot; @&amp;quot;after p1.reset(), p2.use_count()=1\r\n&amp;quot; @&amp;quot;after p1.reset(), p2.get()=0x100205410\r\n&amp;quot;  ================================================================================
+End</description>
+    </item>
+    
     <item>
       <title>C&#43;&#43; Learning Note</title>
       <link>https://blog.getmemap.com/posts/20210407/</link>

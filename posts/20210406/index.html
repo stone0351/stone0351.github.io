@@ -47,7 +47,6 @@
 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 <script type="text/javascript" id="MathJax-script" async
     src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-
 </head>
     <body>
         <nav class="nav">
@@ -194,7 +193,10 @@ sz@sz-VirtualBox:~/ros2_ws/install/my_py_pkg/lib/my_py_pkg$ ./py_node
 [INFO] [1617751777.299029594] [py_test]: Hello ROS2
 </code></pre>
 <p><strong>Execution Node Method#3</strong> ROS command</p>
-<pre><code>sz@sz-VirtualBox:~$ source .bashrc
+<pre><code>configure the setup.py and colcon build pkg as the Method#2
+sz@sz-VirtualBox:~/ros2_ws$ colcon build --packages-select my_py_pkg
+
+sz@sz-VirtualBox:~$ source .bashrc
 // don't forget to source, &quot;py_node&quot; is the name defined in setup.py
 sz@sz-VirtualBox:~$ ros2 run my_py_pkg py_node
 // return below result
@@ -209,15 +211,13 @@ sz@sz-VirtualBox:~/ros2_ws/src/my_cpp_pkg/src$ touch my_first_node.cpp
 #include &quot;rclcpp/rclcpp.hpp&quot;
 
 // MyNode is child class of rclcpp::Node
-class MyNode: public rclcpp::Node
-{
+class MyNode: public rclcpp::Node {
 public:
     int counter_ = 0;
     // MyNode() is class constructor, inherite from parent Node.Node()
     // constructor will be automatically called when an object of a class is created.
     //To create a constructor, use the same name as the class, followed by parentheses ()
-    MyNode():Node(&quot;cpp_test&quot;)
-    {
+    MyNode():Node(&quot;cpp_test&quot;) {
         // &quot;this&quot; is the class pointer 
         RCLCPP_INFO(this-&gt;get_logger(), &quot;Hello Cpp Node&quot;);
         // std::bind took 1st parameter a function i.e. &amp;MyFunc, then its arguments as _1 &amp; _2 as his own arguments.
@@ -230,20 +230,15 @@ public:
         std::cout &lt;&lt; &quot;std::bind(&amp;MyNode::timer_callback, this)= &quot; &lt;&lt; &amp;bind_func_OBJ &lt;&lt; '\n';
         timer_ = this-&gt;create_wall_timer(std::chrono::milliseconds(500), bind_func_OBJ);
     }
-
 private:
     rclcpp::TimerBase::SharedPtr timer_;
-    void timer_callback() 
-    {
+    void timer_callback() {
         counter_ += 1;
         // &quot;Hello %d&quot;, counter_ is similar to printf 
         RCLCPP_INFO(this-&gt;get_logger(), &quot;Hello %d&quot;, counter_);
-    }
-
+    } 
 };
-
-int main(int argc, char **argv)
-{
+int main(int argc, char **argv) {
     rclcpp::init(argc, argv);
 
     //make_shared created the Node class instance and node shared_ptr at one time
@@ -274,6 +269,41 @@ sz@sz-VirtualBox:~$ source .bashrc
 sz@sz-VirtualBox:~/ros2_ws$ ros2 run my_cpp_pkg cpp_node
 </code></pre>
 <p>================================================================================</p>
+<p><em><strong>ROS2 CommandLineTools and Turtlesim</strong></em></p>
+<pre><code>ros2 CLI can be executed at the home directory.
+
+// rename node (only on the fly) from &quot;py_node&quot; to &quot;abc&quot; when run it
+$ ros2 run my_py_pkg py_node --ros-args --remap __node:=abc
+
+// within workspace directory, only for python, colcon build --symlink, 
+// automatially build the node executable
+// must make pkg executable first, chmod +x some.py 
+$ colcon build --packages-select my_py_pkg --symlink-install
+
+$ rqt  // open ROS Qt GUI toolkit
+$ rqt_graph
+
+$ ros2 run turtlesim turtlesim_node
+$ ros2 run turtlesim turtle_teleop_key
+
+$ ros2 topic info /robot_news
+$ ros2 topic hz /robot_news
+$ ros2 topic bw /robot_news
+
+// chech the existed msg type
+$ ros2 interface show example_interfaces/msg/String
+
+// check the topic list
+$ ros2 topic list
+// after run publisher now, check the publisher msg
+$ ros2 topic echo /robot_news
+
+// -r rate 2 hertz
+$ ros2 topic pub -r 2 /robot_news example_interfaces/msg/String &quot;{data: 'Hello from terminal~'}&quot;
+// change node name and change topic name
+$ ros2 run my_py_pkg robot_news_station --ros-args -r __node:=my_station -r robot_news:=my_news
+</code></pre>
+<p>================================================================================</p>
 <p><em><strong>End</strong></em></p>
 
 
@@ -289,12 +319,11 @@ sz@sz-VirtualBox:~/ros2_ws$ ros2 run my_cpp_pkg cpp_node
 </main>
 
 
-        		<footer>
-			
-			<span>
-			&copy; <time datetime="2021-04-08 12:32:45.457052 -0700 PDT m=&#43;0.220869009">2021</time> Shi. CA
-			</span>
-		</footer>
-
+        <footer>
+	
+	<span>
+		&copy; <time datetime="2021-04-16 17:47:48.558846 -0700 PDT m=&#43;0.103353012">2021</time> Shi. CA
+	</span>
+</footer>
     </body>
 </html>
