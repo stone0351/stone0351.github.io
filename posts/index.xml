@@ -6,13 +6,27 @@
     <description>Recent content in Posts on Shi&#39;s Gists and Reflection</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 16 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.getmemap.com/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 09 Jul 2021 01:57:21 -0700</lastBuildDate><atom:link href="https://blog.getmemap.com/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Flutter State Management</title>
+      <link>https://blog.getmemap.com/posts/20210709_flutter_state_management/</link>
+      <pubDate>Fri, 09 Jul 2021 01:57:21 -0700</pubDate>
+      
+      <guid>https://blog.getmemap.com/posts/20210709_flutter_state_management/</guid>
+      <description>setState
+setState will mix the state management with the UI code, only for simple app.
+================================================================================
+Bloc
+  build the model class which will be imutable, which means when state changes, there will be an new model instance:
+ enum FormType { signIn, register } class EmailSignModel { EmailSignModel({ this.email = &amp;quot;&amp;quot;, this.password = &amp;quot;&amp;quot;, this.formType = FormType.signIn, this.isLoading = false, this.submitted = false, }); final String email; final String password; final FormType formType; final bool isLoading; final bool submitted; EmailSignModel copyWith({ String?</description>
+    </item>
+    
     <item>
       <title>Kalman Filter Learning Note</title>
-      <link>https://blog.getmemap.com/posts/20210416/</link>
+      <link>https://blog.getmemap.com/posts/20210416_kalman/</link>
       <pubDate>Fri, 16 Apr 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://blog.getmemap.com/posts/20210416/</guid>
+      <guid>https://blog.getmemap.com/posts/20210416_kalman/</guid>
       <description>Kalman Filter Algebra Formula
 ================================================================================
 Linear Algebra Formula
@@ -25,20 +39,20 @@ End</description>
     
     <item>
       <title>C&#43;&#43; Learning Note</title>
-      <link>https://blog.getmemap.com/posts/20210407/</link>
+      <link>https://blog.getmemap.com/posts/20210407_cpp/</link>
       <pubDate>Wed, 07 Apr 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://blog.getmemap.com/posts/20210407/</guid>
+      <guid>https://blog.getmemap.com/posts/20210407_cpp/</guid>
       <description>C++ program to demonstrate shared_ptr
 #include &amp;lt;iostream&amp;gt; #include &amp;lt;memory&amp;gt; using namespace std; class A { public: void show() { cout &amp;lt;&amp;lt; &amp;quot;A::show1()&amp;quot; &amp;lt;&amp;lt; endl; } }; int main() { shared_ptr&amp;lt;A&amp;gt; p1(new A); cout &amp;lt;&amp;lt; &amp;quot;after p1 created, p1.use_count()=&amp;quot; &amp;lt;&amp;lt; p1.use_count() &amp;lt;&amp;lt; endl; cout &amp;lt;&amp;lt; &amp;quot;p1.get()=&amp;quot; &amp;lt;&amp;lt; p1.get() &amp;lt;&amp;lt; endl; p1-&amp;gt;show(); shared_ptr&amp;lt;A&amp;gt; p2(p1); cout &amp;lt;&amp;lt; &amp;quot;after shared_ptr&amp;lt;A&amp;gt; p2(p1), p2=&amp;quot; &amp;lt;&amp;lt; p2 &amp;lt;&amp;lt; endl; cout &amp;lt;&amp;lt; &amp;quot;after p2 created, p1.use_count()=&amp;quot; &amp;lt;&amp;lt; p1.use_count() &amp;lt;&amp;lt; endl; cout &amp;lt;&amp;lt; &amp;quot;after p2 created, p2.</description>
     </item>
     
     <item>
       <title>ROS2 Learning Note</title>
-      <link>https://blog.getmemap.com/posts/20210406/</link>
+      <link>https://blog.getmemap.com/posts/20210406_ros2/</link>
       <pubDate>Tue, 06 Apr 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://blog.getmemap.com/posts/20210406/</guid>
+      <guid>https://blog.getmemap.com/posts/20210406_ros2/</guid>
       <description>Install ROS2 on Ubuntu
 \$ sudo apt update \$ sudo apt upgrade \$ sudo apt install build-essential gcc make perl dkms  VirtualBox VM=&amp;gt;Device =&amp;gt;Insert Guest Additional CD Image
 Then click run, after installation finished, restart the VM
@@ -48,10 +62,10 @@ Shut down all your VMs. And I don&#39;t mean &amp;quot;Saved State&amp;quot; or 
     
     <item>
       <title>Ubuntu Setup Note</title>
-      <link>https://blog.getmemap.com/posts/20210405/</link>
+      <link>https://blog.getmemap.com/posts/20210405_ubuntu/</link>
       <pubDate>Mon, 05 Apr 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://blog.getmemap.com/posts/20210405/</guid>
+      <guid>https://blog.getmemap.com/posts/20210405_ubuntu/</guid>
       <description>SSh Into Ubuntu VM Virtualbox
 Method 1. Port forwarding from GUI
 For the guest VM, then open &amp;ldquo;Settings&amp;rdquo; &amp;gt;&amp;gt; &amp;ldquo;Network&amp;rdquo; &amp;gt;&amp;gt; &amp;ldquo;Advanced&amp;rdquo; section.
@@ -64,10 +78,10 @@ ssh -p 2522 &amp;lt;login&amp;gt;@127.0.0.1</description>
     
     <item>
       <title>Flutter Gists</title>
-      <link>https://blog.getmemap.com/posts/20210328/</link>
+      <link>https://blog.getmemap.com/posts/20210328_flutter/</link>
       <pubDate>Sun, 28 Mar 2021 01:57:21 -0700</pubDate>
       
-      <guid>https://blog.getmemap.com/posts/20210328/</guid>
+      <guid>https://blog.getmemap.com/posts/20210328_flutter/</guid>
       <description>Flutter RaisedButton: callback function
 See below example:
  int result = 0; void calculate(num1, num2) { setState(() { result = num1 + num2; }); } new RaisedButton( onPressed: () =&amp;gt; calculate(1, 100), ... ), new Text(&amp;quot;$result&amp;quot;)    onPressed: calculate(1, 100),   calculate(1, 100) will be called every time Flutter runs build()
@@ -77,10 +91,10 @@ When the button pressed, then call back the function</description>
     
     <item>
       <title>Vehicle Kinematic Model</title>
-      <link>https://blog.getmemap.com/posts/20210326/</link>
+      <link>https://blog.getmemap.com/posts/20210326_kinematic/</link>
       <pubDate>Fri, 26 Mar 2021 22:08:44 -0700</pubDate>
       
-      <guid>https://blog.getmemap.com/posts/20210326/</guid>
+      <guid>https://blog.getmemap.com/posts/20210326_kinematic/</guid>
       <description>$\dot{x}_c = v \cos{(\theta + \beta)}$
 $\dot{y}_c = v \sin{(\theta + \beta)}$
 $\dot{\theta} = \frac{v \cos{\beta} \tan{\delta}}{L}$
@@ -91,10 +105,10 @@ where the inputs are the bicycle speed $v$ and steering angle rate $\omega$. The
     
     <item>
       <title>Git and Hugo Common Commands</title>
-      <link>https://blog.getmemap.com/posts/20210325/</link>
+      <link>https://blog.getmemap.com/posts/20210325_git/</link>
       <pubDate>Thu, 25 Mar 2021 19:35:34 -0700</pubDate>
       
-      <guid>https://blog.getmemap.com/posts/20210325/</guid>
+      <guid>https://blog.getmemap.com/posts/20210325_git/</guid>
       <description>git log
 git status
 git add -A .

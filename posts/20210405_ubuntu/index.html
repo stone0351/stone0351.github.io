@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+	
+	
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>Ubuntu Setup Note &middot; Shi&#39;s Gists and Reflection</title>
+
+	
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href='/css/fonts.css'>
+	
+	<link rel="icon" type="image/png" sizes="32x32" href='/images/favicon-32x32.png'>
+	<link rel="icon" type="image/png" sizes="16x16" href='/images/favicon-16x16.png'>
+	<link rel="apple-touch-icon" sizes="180x180" href='/images/apple-touch-icon.png'>
+
+	
+	<link href="" rel="alternate"
+		type="application/rss+xml" title="Shi&#39;s Gists and Reflection" />
+
+	
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	
+	<script>
+    MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']],
+            displayMath: [['$$', '$$'], ['\\[', '\\]']],
+            processEscapes: true,
+            processEnvironments: true
+        },
+        options: {
+            skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+        }
+    };
+
+    window.addEventListener('load', (event) => {
+        document.querySelectorAll("mjx-container").forEach(function (x) {
+            x.parentElement.classList += 'has-jax'
+        })
+    });
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+    <body>
+        <nav class="nav">
+	<div class="nav-container">
+		<div class="nav-headbar">
+			<a href="/">
+				<h2 class="nav-title">Shi's Gists and Reflection</h2>
+			</a>
+		</div>
+		<ul>
+			<li>
+				<a href="https://github.com/stone0351">
+					<i class="fa fa-github"></i>
+					<span>MyGithub</span>
+				</a>
+			</li>
+			<li>
+				<a href="/posts/">
+					<span>Posts</span>
+				</a>
+			</li>
+		</ul>
+	</div>
+</nav>
+        
+
+<main>
+	<div class="post">
+		<div class="post-info">
+    <br>
+    <span>on&nbsp;</span><time datetime="2021-04-05 00:00:00 &#43;0000 UTC">April 5, 2021</time>
+</div>
+		<h3 class="post-title">Ubuntu Setup Note</h3>
+<div class="post-line"></div>
+
+		
+
+		<p><em><strong>SSh Into Ubuntu VM Virtualbox</strong></em></p>
+<p>Method 1. Port forwarding from GUI</p>
+<p>For the guest VM, then open &ldquo;Settings&rdquo; &gt;&gt; &ldquo;Network&rdquo; &gt;&gt; &ldquo;Advanced&rdquo;
+section.</p>
+<p>Click on &ldquo;Port Forwarding&rdquo; button, add a new port forwarding rule.</p>
+<p>For example, set up the rule from the panel as</p>
+<p><img src="/images/natportforwarding.png" alt=""></p>
+<p>To confirm that port 2522 is listening, we check using the netstat
+command.</p>
+<p>Now, we can SSH to the guest VM using</p>
+<p>ssh -p 2522 &lt;login&gt;@127.0.0.1</p>
+<p>Here, the SSH login request sent to 127.0.0.1:2522 will automatically be
+translated into 10.0.2.15:22 by VirtualBox. Thus, we can now SSH to the
+guest VM.</p>
+<hr>
+<p>Method 2. Port forwarding from command line</p>
+<p>To create a port forwarding rule for guest VM named &ldquo;Centos&rdquo; with IP
+address 10.0.2.15 and SSH port 22, mapped to local host at port 2522,
+use the command:</p>
+<p>VBoxManage modifyvm &quot;Centos&quot; --natpf1</p>
+<p>&quot;SSH,tcp,127.0.0.1,2522,10.0.2.15,22&quot;</p>
+<p>Here, the name of the rule should be set as unique.</p>
+<p>After creating the rule, we verify it using</p>
+<p>VBoxManage showvminfo &quot;Centos&quot; | grep NIC</p>
+<p>And, this will show the rule in the results.</p>
+<p>================================================================================</p>
+<p><em><strong>Install SSh on Ubuntu</strong></em></p>
+<p>Let's start to install openssh-server.<br>
+First update the system</p>
+<p>$ sudo apt update</p>
+<p>$ sudo apt upgrade</p>
+<p>To install openssh-server package, run:</p>
+<p>$ sudo apt install openssh-server</p>
+<p>Once installed, the SSH service should be started automatically. If
+necessary, you can start (or stop, restart) the service manually via
+command:</p>
+<p>$ sudo service ssh start</p>
+<p>Verify that ssh service running</p>
+<p>$ sudo systemctl status ssh</p>
+<p><img src="/images/sshstatus.png" alt=""></p>
+<p><strong>Configure firewall and open port 22</strong></p>
+<p>Before enabling the UFW firewall we need to add a rule which will allow
+incoming SSH connections. If you&rsquo;re connecting to your server from a
+remote location, which is almost always the case and you enable the UFW
+firewall before explicitly allow incoming SSH connections you will no
+longer be able to connect to your Ubuntu server.</p>
+<p>To configure your UFW firewall to allow incoming SSH connections, type
+the following command:</p>
+<p>$ sudo ufw allow ssh</p>
+<p>Now we can enable UFW firewall by typing:</p>
+<p>$ sudo ufw enable</p>
+<p>You can check the status of UFW with the following command:</p>
+<p>$ sudo ufw status</p>
+<p>================================================================================</p>
+<p><em><strong>Install VS Code on Ubuntu</strong></em></p>
+<p>sudo snap install &ndash;classic code</p>
+<p>================================================================================</p>
+<p><em><strong>End</strong></em></p>
+
+
+		
+	</div>
+
+	<div class="pagination">
+		<a href="/posts/20210328_flutter/" class="left arrow">&#8592;</a>
+		<a href="/posts/20210406_ros2/" class="right arrow">&#8594;</a>
+
+		<a href="#" class="top">Top</a>
+	</div>
+</main>
+
+
+        <footer>
+	
+	<span>
+		&copy; <time datetime="2021-07-09 17:16:29.641507 -0700 PDT m=&#43;0.115255271">2021</time> Shi. CA
+	</span>
+</footer>
+    </body>
+</html>

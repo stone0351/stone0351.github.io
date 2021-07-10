@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+	
+	
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>C&#43;&#43; Learning Note &middot; Shi&#39;s Gists and Reflection</title>
+
+	
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href='/css/fonts.css'>
+	
+	<link rel="icon" type="image/png" sizes="32x32" href='/images/favicon-32x32.png'>
+	<link rel="icon" type="image/png" sizes="16x16" href='/images/favicon-16x16.png'>
+	<link rel="apple-touch-icon" sizes="180x180" href='/images/apple-touch-icon.png'>
+
+	
+	<link href="" rel="alternate"
+		type="application/rss+xml" title="Shi&#39;s Gists and Reflection" />
+
+	
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	
+	<script>
+    MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']],
+            displayMath: [['$$', '$$'], ['\\[', '\\]']],
+            processEscapes: true,
+            processEnvironments: true
+        },
+        options: {
+            skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+        }
+    };
+
+    window.addEventListener('load', (event) => {
+        document.querySelectorAll("mjx-container").forEach(function (x) {
+            x.parentElement.classList += 'has-jax'
+        })
+    });
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+    <body>
+        <nav class="nav">
+	<div class="nav-container">
+		<div class="nav-headbar">
+			<a href="/">
+				<h2 class="nav-title">Shi's Gists and Reflection</h2>
+			</a>
+		</div>
+		<ul>
+			<li>
+				<a href="https://github.com/stone0351">
+					<i class="fa fa-github"></i>
+					<span>MyGithub</span>
+				</a>
+			</li>
+			<li>
+				<a href="/posts/">
+					<span>Posts</span>
+				</a>
+			</li>
+		</ul>
+	</div>
+</nav>
+        
+
+<main>
+	<div class="post">
+		<div class="post-info">
+    <br>
+    <span>on&nbsp;</span><time datetime="2021-04-07 00:00:00 &#43;0000 UTC">April 7, 2021</time>
+</div>
+		<h3 class="post-title">C&#43;&#43; Learning Note</h3>
+<div class="post-line"></div>
+
+		
+
+		<p><em><strong>C++ program to demonstrate shared_ptr</strong></em></p>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;memory&gt;
+using namespace std;
+
+class A
+{
+public:
+    void show()
+    {
+        cout &lt;&lt; &quot;A::show1()&quot; &lt;&lt; endl;
+    }
+};
+
+int main()
+{
+    shared_ptr&lt;A&gt; p1(new A);
+    cout &lt;&lt; &quot;after p1 created, p1.use_count()=&quot; &lt;&lt; p1.use_count() &lt;&lt; endl;
+    cout &lt;&lt; &quot;p1.get()=&quot; &lt;&lt; p1.get() &lt;&lt; endl;
+    p1-&gt;show();
+
+    shared_ptr&lt;A&gt; p2(p1);
+    cout &lt;&lt; &quot;after shared_ptr&lt;A&gt; p2(p1), p2=&quot; &lt;&lt; p2 &lt;&lt; endl;
+    cout &lt;&lt; &quot;after p2 created, p1.use_count()=&quot; &lt;&lt; p1.use_count() &lt;&lt; endl;
+    cout &lt;&lt; &quot;after p2 created, p2.use_count()=&quot; &lt;&lt; p2.use_count() &lt;&lt; endl;
+    p2-&gt;show();
+
+    // Relinquishes ownership of p1 on the object
+    // and pointer becomes NULL
+    p1.reset();
+    cout &lt;&lt; &quot;after p1.reset(), p1=&quot; &lt;&lt; p1 &lt;&lt; endl;
+    cout &lt;&lt; &quot;after p1.reset(), p1.use_count()=&quot; &lt;&lt; p1.use_count() &lt;&lt; endl;
+    cout &lt;&lt; &quot;after p1.reset(), p2.use_count()=&quot; &lt;&lt; p2.use_count() &lt;&lt; endl;
+    cout &lt;&lt; &quot;after p1.reset(), p2.get()=&quot; &lt;&lt; p2.get() &lt;&lt; endl;
+
+    return 0;
+}
+</code></pre>
+<hr>
+<p>Output is like below:</p>
+<pre><code>@&quot;after p1 created, p1.use_count()=1\r\n&quot;
+@&quot;p1.get()=0x100205410\r\n&quot;
+@&quot;A::show1()\r\n&quot;
+@&quot;after shared_ptr&lt;A&gt; p2(p1), p2=0x100205410\r\n&quot;
+@&quot;after p2 created, p1.use_count()=2\r\n&quot;
+@&quot;after p2 created, p2.use_count()=2\r\n&quot;
+@&quot;A::show1()\r\n&quot;
+@&quot;after p1.reset(), p1=0x0\r\n&quot;
+@&quot;after p1.reset(), p1.use_count()=0\r\n&quot;
+@&quot;after p1.reset(), p2.use_count()=1\r\n&quot;
+@&quot;after p1.reset(), p2.get()=0x100205410\r\n&quot;
+</code></pre>
+<p>================================================================================</p>
+<p><em><strong>End</strong></em></p>
+
+
+		
+	</div>
+
+	<div class="pagination">
+		<a href="/posts/20210406_ros2/" class="left arrow">&#8592;</a>
+		<a href="/posts/20210416_kalman/" class="right arrow">&#8594;</a>
+
+		<a href="#" class="top">Top</a>
+	</div>
+</main>
+
+
+        <footer>
+	
+	<span>
+		&copy; <time datetime="2021-07-09 17:16:29.642749 -0700 PDT m=&#43;0.116497392">2021</time> Shi. CA
+	</span>
+</footer>
+    </body>
+</html>

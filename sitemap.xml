@@ -2,31 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://blog.getmemap.com/posts/20210416/</loc>
-    <lastmod>2021-04-16T00:00:00+00:00</lastmod>
+    <loc>https://blog.getmemap.com/posts/20210709_flutter_state_management/</loc>
+    <lastmod>2021-07-09T01:57:21-07:00</lastmod>
   </url><url>
     <loc>https://blog.getmemap.com/posts/</loc>
-    <lastmod>2021-04-16T00:00:00+00:00</lastmod>
+    <lastmod>2021-07-09T01:57:21-07:00</lastmod>
   </url><url>
     <loc>https://blog.getmemap.com/</loc>
+    <lastmod>2021-07-09T01:57:21-07:00</lastmod>
+  </url><url>
+    <loc>https://blog.getmemap.com/posts/20210416_kalman/</loc>
     <lastmod>2021-04-16T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://blog.getmemap.com/posts/20210407/</loc>
+    <loc>https://blog.getmemap.com/posts/20210407_cpp/</loc>
     <lastmod>2021-04-07T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://blog.getmemap.com/posts/20210406/</loc>
+    <loc>https://blog.getmemap.com/posts/20210406_ros2/</loc>
     <lastmod>2021-04-06T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://blog.getmemap.com/posts/20210405/</loc>
+    <loc>https://blog.getmemap.com/posts/20210405_ubuntu/</loc>
     <lastmod>2021-04-05T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://blog.getmemap.com/posts/20210328/</loc>
+    <loc>https://blog.getmemap.com/posts/20210328_flutter/</loc>
     <lastmod>2021-03-28T01:57:21-07:00</lastmod>
   </url><url>
-    <loc>https://blog.getmemap.com/posts/20210326/</loc>
+    <loc>https://blog.getmemap.com/posts/20210326_kinematic/</loc>
     <lastmod>2021-03-26T22:08:44-07:00</lastmod>
   </url><url>
-    <loc>https://blog.getmemap.com/posts/20210325/</loc>
+    <loc>https://blog.getmemap.com/posts/20210325_git/</loc>
     <lastmod>2021-03-25T19:35:34-07:00</lastmod>
   </url><url>
     <loc>https://blog.getmemap.com/categories/</loc>

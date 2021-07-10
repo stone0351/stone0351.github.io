@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+	
+	
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>ROS2 Learning Note &middot; Shi&#39;s Gists and Reflection</title>
+
+	
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href='/css/fonts.css'>
+	
+	<link rel="icon" type="image/png" sizes="32x32" href='/images/favicon-32x32.png'>
+	<link rel="icon" type="image/png" sizes="16x16" href='/images/favicon-16x16.png'>
+	<link rel="apple-touch-icon" sizes="180x180" href='/images/apple-touch-icon.png'>
+
+	
+	<link href="" rel="alternate"
+		type="application/rss+xml" title="Shi&#39;s Gists and Reflection" />
+
+	
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	
+	<script>
+    MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']],
+            displayMath: [['$$', '$$'], ['\\[', '\\]']],
+            processEscapes: true,
+            processEnvironments: true
+        },
+        options: {
+            skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+        }
+    };
+
+    window.addEventListener('load', (event) => {
+        document.querySelectorAll("mjx-container").forEach(function (x) {
+            x.parentElement.classList += 'has-jax'
+        })
+    });
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+    <body>
+        <nav class="nav">
+	<div class="nav-container">
+		<div class="nav-headbar">
+			<a href="/">
+				<h2 class="nav-title">Shi's Gists and Reflection</h2>
+			</a>
+		</div>
+		<ul>
+			<li>
+				<a href="https://github.com/stone0351">
+					<i class="fa fa-github"></i>
+					<span>MyGithub</span>
+				</a>
+			</li>
+			<li>
+				<a href="/posts/">
+					<span>Posts</span>
+				</a>
+			</li>
+		</ul>
+	</div>
+</nav>
+        
+
+<main>
+	<div class="post">
+		<div class="post-info">
+    <br>
+    <span>on&nbsp;</span><time datetime="2021-04-06 00:00:00 &#43;0000 UTC">April 6, 2021</time>
+</div>
+		<h3 class="post-title">ROS2 Learning Note</h3>
+<div class="post-line"></div>
+
+		
+
+		<p><em><strong>Install ROS2 on Ubuntu</strong></em></p>
+<pre><code>\$ sudo apt update
+\$ sudo apt upgrade
+\$ sudo apt install build-essential gcc make perl dkms
+</code></pre>
+<p>VirtualBox VM=&gt;Device =&gt;Insert Guest Additional CD Image</p>
+<p>Then click run, after installation finished, restart the VM</p>
+<p>If error like VBoxGuestAdditions.iso' (VERR_PDM_MEDIA_LOCKED)</p>
+<p>Shut down all your VMs. And I don't mean &quot;Saved State&quot; or &quot;Paused&quot;,
+but completely shut them down. If you already have them in &quot;Saved
+State&quot; or &quot;Paused&quot;, then resume the VM and from within the guest OS
+shutdown the guest OS.</p>
+<p>Then go to the menu File » Virtual Media Manager » Optical Disks » find
+the VBoxGuestAdditions.iso » select it and from the toolbar click (if
+enabled) the &quot;Release&quot; button, and then the &quot;Remove&quot; button.</p>
+<p>follow the guide <a href="https://docs.ros.org/en/foxy/Installation.html">https://docs.ros.org/en/foxy/Installation.html</a></p>
+<p>after install the ROS2, cd to /opt/ros/foxy</p>
+<p>$ source setup.bash</p>
+<p>Every time open a terminal, need to do source, like below</p>
+<p>$ source /opt/ros/foxy/setup.bash</p>
+<p>In order to avoiding that, we can do:</p>
+<p>$ gedit ～/.bashrc</p>
+<p>Add &ldquo;source /opt/ros/foxy/setup.bash&rdquo; at the bottom of .bashrc</p>
+<p>install ROS2 compiler &ldquo;colcon&rdquo;</p>
+<p>$sudo apt install python3-colcon-common-extensions</p>
+<p>Add &ldquo;source /usr/share/colcon_argcomplete/hook/colcon-argcomplete.bash&rdquo; at the bottom of .bashrc</p>
+<p>================================================================================</p>
+<p><em><strong>Create ROS2 workspace</strong></em></p>
+<p><img src="/images/createwkspace.png" alt=""></p>
+<pre><code>Add &quot;source ~/ros2_ws/install/setup.bash&quot; at the bottom of ~/.bashrc
+
+//create a Python package
+sz@sz-VirtualBox:~/ros2_ws/src$ ros2 pkg create my_py_pkg --build-type ament_python --dependencies rclpy
+
+// use colcon to compile all package in the workspace folder
+sz@sz-VirtualBox:~/ros2_ws$ colcon build
+
+// use colcon to compile the Python package
+sz@sz-VirtualBox:~/ros2_ws$ colcon build --packages-select my_py_pkg
+
+//create a C++ package
+sz@sz-VirtualBox:~/ros2_ws/src$ ros2 pkg create my_cpp_pkg --build-type ament_cmake --dependencies rclcpp
+
+// use colcon to compile the C++ package
+sz@sz-VirtualBox:~/ros2_ws$ colcon build --packages-select my_cpp_pkg
+</code></pre>
+<p><img src="/images/createcpppkg.png" alt=""></p>
+<p>================================================================================</p>
+<p><em><strong>Create ROS Node by Python</strong></em></p>
+<pre><code>// Create my_first_node.py
+sz@sz-VirtualBox:~/ros2_ws/src/my_py_pkg/my_py_pkg$ touch my_first_node.py
+------------------------------------------
+#!/usr/bin/env python3
+import rclpy
+from rclpy.node import Node
+
+class MyNode(Node):
+    def __init__(self):
+        super().__init__(&quot;py_test&quot;)
+        self.counter_ = 0
+        self.get_logger().info(&quot;Hello ROS2&quot;)
+        self.create_timer(0.5, self.timer_callback)
+
+    def timer_callback(self):
+        self.counter_ += 1
+        self.get_logger().info(f&quot;Hello {self.counter_}&quot;)
+
+def main(args=None):
+    rclpy.init(args=args)
+    node = MyNode()
+    rclpy.spin(node)
+    rclpy.shutdown()
+
+if __name__ == &quot;__main__&quot;:
+    main()
+------------------------------------------
+// Change the file permissions
+sz@sz-VirtualBox:~/ros2_ws/src/my_py_pkg/my_py_pkg$ chmod +x my_first_node.py
+</code></pre>
+<p><strong>Execution Node Method#1</strong> open the .py file</p>
+<pre><code>sz@sz-VirtualBox:~/ros2_ws/src/my_py_pkg/my_py_pkg$ ./my_first_node.py
+// return below result
+[INFO] [1617747746.924412563] [py_test]: Hello ROS2
+</code></pre>
+<p><strong>Execution Node Method#2</strong> configure the setup.py in SRC folder</p>
+<pre><code>------------------------------------------
+entry_points={
+    'console_scripts': [
+        &quot;py_node = my_py_pkg.my_first_node:main&quot;
+    ],
+},
+------------------------------------------
+// colcon build
+sz@sz-VirtualBox:~$ cd ros2_ws/
+// run colcon build at the workspace directory &quot;ros2_ws&quot;
+sz@sz-VirtualBox:~/ros2_ws$ colcon build --packages-select my_py_pkg
+Starting &gt;&gt;&gt; my_py_pkg
+Finished &lt;&lt;&lt; my_py_pkg [0.90s]          
+Summary: 1 package finished [1.20s]
+// before execute the node, don't forget to source the workspace
+sz@sz-VirtualBox:~/ros2_ws$ source ~/.bashrc
+sz@sz-VirtualBox:~/ros2_ws$ cd install/my_py_pkg/lib/my_py_pkg/
+sz@sz-VirtualBox:~/ros2_ws/install/my_py_pkg/lib/my_py_pkg$ ls
+py_node
+sz@sz-VirtualBox:~/ros2_ws/install/my_py_pkg/lib/my_py_pkg$ ./py_node
+// return below result
+[INFO] [1617751777.299029594] [py_test]: Hello ROS2
+</code></pre>
+<p><strong>Execution Node Method#3</strong> ROS command</p>
+<pre><code>configure the setup.py and colcon build pkg as the Method#2
+sz@sz-VirtualBox:~/ros2_ws$ colcon build --packages-select my_py_pkg
+
+sz@sz-VirtualBox:~$ source .bashrc
+// don't forget to source, &quot;py_node&quot; is the name defined in setup.py
+sz@sz-VirtualBox:~$ ros2 run my_py_pkg py_node
+// return below result
+[INFO] [1617752823.005040235] [py_test]: Hello ROS2
+</code></pre>
+<p>================================================================================</p>
+<p><em><strong>Create ROS Node by C++</strong></em></p>
+<pre><code>// Create my_first_node.cpp
+sz@sz-VirtualBox:~/ros2_ws/src/my_cpp_pkg/src$ touch my_first_node.cpp
+------------------------------------------
+// need to edit c_cpp_properties.json first include the path
+#include &quot;rclcpp/rclcpp.hpp&quot;
+
+// MyNode is child class of rclcpp::Node
+class MyNode: public rclcpp::Node {
+public:
+    int counter_ = 0;
+    // MyNode() is class constructor, inherite from parent Node.Node()
+    // constructor will be automatically called when an object of a class is created.
+    //To create a constructor, use the same name as the class, followed by parentheses ()
+    MyNode():Node(&quot;cpp_test&quot;) {
+        // &quot;this&quot; is the class pointer 
+        RCLCPP_INFO(this-&gt;get_logger(), &quot;Hello Cpp Node&quot;);
+        // std::bind took 1st parameter a function i.e. &amp;MyFunc, then its arguments as _1 &amp; _2 as his own arguments.
+        // below std::bind returns a function object
+        // original func timer_callback() has no arguments, no _1 , _2, etc.
+        // bind_func_OBJ is just calling class MyNode member function timer_callback()
+        auto bind_func_OBJ = std::bind(&amp;MyNode::timer_callback, this);
+        // ‘\n’ single quotes are needed. When embedded into text double-quoted, single quotes aren’t needed.
+        // Prefer ‘\n’ over std::endl when outputting text to the console
+        std::cout &lt;&lt; &quot;std::bind(&amp;MyNode::timer_callback, this)= &quot; &lt;&lt; &amp;bind_func_OBJ &lt;&lt; '\n';
+        timer_ = this-&gt;create_wall_timer(std::chrono::milliseconds(500), bind_func_OBJ);
+    }
+private:
+    rclcpp::TimerBase::SharedPtr timer_;
+    void timer_callback() {
+        counter_ += 1;
+        // &quot;Hello %d&quot;, counter_ is similar to printf 
+        RCLCPP_INFO(this-&gt;get_logger(), &quot;Hello %d&quot;, counter_);
+    } 
+};
+int main(int argc, char **argv) {
+    rclcpp::init(argc, argv);
+
+    //make_shared created the Node class instance and node shared_ptr at one time
+    //node is shared_ptr, &quot;std::&quot; equal to &quot;using namespace std;&quot;
+    auto node = std::make_shared&lt;MyNode&gt;();
+    // spin() need to input the Node class shared_ptr
+    rclcpp::spin(node);
+    rclcpp::shutdown();
+    return 0;
+}
+------------------------------------------
+
+// Add below code to CMakeList.txt
+------------------------------------------
+add_executable(cpp_node src/my_first_node.cpp)
+ament_target_dependencies(cpp_node rclcpp)
+
+install(TARGETS
+cpp_node
+DESTINATION lib/${PROJECT_NAME}
+)
+------------------------------------------
+
+// Build the executable &quot;cpp_node&quot;
+sz@sz-VirtualBox:~/ros2_ws$ colcon build --packages-select my_cpp_pkg
+// Run the &quot;cpp_node&quot;
+sz@sz-VirtualBox:~$ source .bashrc
+sz@sz-VirtualBox:~/ros2_ws$ ros2 run my_cpp_pkg cpp_node
+</code></pre>
+<p>================================================================================</p>
+<p><em><strong>ROS2 CommandLineTools and Turtlesim</strong></em></p>
+<pre><code>ros2 CLI can be executed at the home directory.
+
+// rename node (only on the fly) from &quot;py_node&quot; to &quot;abc&quot; when run it
+$ ros2 run my_py_pkg py_node --ros-args --remap __node:=abc
+
+// within workspace directory, only for python, colcon build --symlink, 
+// automatially build the node executable
+// must make pkg executable first, chmod +x some.py 
+$ colcon build --packages-select my_py_pkg --symlink-install
+
+$ rqt  // open ROS Qt GUI toolkit
+$ rqt_graph
+
+$ ros2 run turtlesim turtlesim_node
+$ ros2 run turtlesim turtle_teleop_key
+
+$ ros2 topic info /robot_news
+$ ros2 topic hz /robot_news
+$ ros2 topic bw /robot_news
+
+// chech the existed msg type
+$ ros2 interface show example_interfaces/msg/String
+
+// check the topic list
+$ ros2 topic list
+// after run publisher now, check the publisher msg
+$ ros2 topic echo /robot_news
+
+// -r rate 2 hertz
+$ ros2 topic pub -r 2 /robot_news example_interfaces/msg/String &quot;{data: 'Hello from terminal~'}&quot;
+// change node name and change topic name
+$ ros2 run my_py_pkg robot_news_station --ros-args -r __node:=my_station -r robot_news:=my_news
+</code></pre>
+<p>================================================================================</p>
+<p><em><strong>End</strong></em></p>
+
+
+		
+	</div>
+
+	<div class="pagination">
+		<a href="/posts/20210405_ubuntu/" class="left arrow">&#8592;</a>
+		<a href="/posts/20210407_cpp/" class="right arrow">&#8594;</a>
+
+		<a href="#" class="top">Top</a>
+	</div>
+</main>
+
+
+        <footer>
+	
+	<span>
+		&copy; <time datetime="2021-07-09 17:16:29.64304 -0700 PDT m=&#43;0.116788328">2021</time> Shi. CA
+	</span>
+</footer>
+    </body>
+</html>

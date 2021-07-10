@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+	
+	
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>Flutter State Management &middot; Shi&#39;s Gists and Reflection</title>
+
+	
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href='/css/fonts.css'>
+	
+	<link rel="icon" type="image/png" sizes="32x32" href='/images/favicon-32x32.png'>
+	<link rel="icon" type="image/png" sizes="16x16" href='/images/favicon-16x16.png'>
+	<link rel="apple-touch-icon" sizes="180x180" href='/images/apple-touch-icon.png'>
+
+	
+	<link href="" rel="alternate"
+		type="application/rss+xml" title="Shi&#39;s Gists and Reflection" />
+
+	
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	
+	<script>
+    MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']],
+            displayMath: [['$$', '$$'], ['\\[', '\\]']],
+            processEscapes: true,
+            processEnvironments: true
+        },
+        options: {
+            skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+        }
+    };
+
+    window.addEventListener('load', (event) => {
+        document.querySelectorAll("mjx-container").forEach(function (x) {
+            x.parentElement.classList += 'has-jax'
+        })
+    });
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+    <body>
+        <nav class="nav">
+	<div class="nav-container">
+		<div class="nav-headbar">
+			<a href="/">
+				<h2 class="nav-title">Shi's Gists and Reflection</h2>
+			</a>
+		</div>
+		<ul>
+			<li>
+				<a href="https://github.com/stone0351">
+					<i class="fa fa-github"></i>
+					<span>MyGithub</span>
+				</a>
+			</li>
+			<li>
+				<a href="/posts/">
+					<span>Posts</span>
+				</a>
+			</li>
+		</ul>
+	</div>
+</nav>
+        
+
+<main>
+	<div class="post">
+		<div class="post-info">
+    <br>
+    <span>on&nbsp;</span><time datetime="2021-07-09 01:57:21 -0700 PDT">July 9, 2021</time>
+</div>
+		<h3 class="post-title">Flutter State Management</h3>
+<div class="post-line"></div>
+
+		
+
+		<p><em><strong>setState</strong></em></p>
+<p>setState will mix the state management with the UI code, only for simple app.</p>
+<p>================================================================================</p>
+<p><em><strong>Bloc</strong></em></p>
+<ol>
+<li>
+<p>build the model class which will be imutable, which means when state changes, there will be an new model instance:</p>
+<pre><code> enum FormType { signIn, register }
+ class EmailSignModel {
+ EmailSignModel({
+     this.email = &quot;&quot;,
+     this.password = &quot;&quot;,
+     this.formType = FormType.signIn,
+     this.isLoading = false,
+     this.submitted = false,
+ });
+ final String email;
+ final String password;
+ final FormType formType;
+ final bool isLoading;
+ final bool submitted;
+
+ EmailSignModel copyWith({
+     String? email,
+     String? password,
+     FormType? formType,
+     bool? isLoading,
+     bool? submitted,
+ }) {
+     return EmailSignModel(
+     email: email ?? this.email,
+     password: password ?? this.password,
+     formType: formType ?? this.formType,
+     isLoading: isLoading ?? this.isLoading,
+     submitted: submitted ?? this.submitted,
+     );
+ }
+ }
+</code></pre>
+</li>
+<li>
+<p>Build the bloc class and set up the stream for the model</p>
+<pre><code> // class EmailBloc is for email_sign page
+ class EmailBloc {
+ EmailSignModel _model = EmailSignModel();
+
+ final StreamController&lt;EmailSignModel&gt; _modelController =
+     StreamController&lt;EmailSignModel&gt;.broadcast();
+ Stream&lt;EmailSignModel&gt; get modelStream =&gt; _modelController.stream;
+
+ void dispose() {
+     _modelController.close();
+ }
+
+ void updateWith({
+     String? email,
+     String? password,
+     FormType? formType,
+     bool? isLoading,
+     bool? submitted,
+ }) {
+     // update model
+     _model = _model.copyWith(
+     email: email,
+     password: password,
+     formType: formType,
+     isLoading: isLoading,
+     submitted: submitted,
+     );
+     // add updated model to _modelController
+     _modelController.add(_model);
+ }
+ }
+</code></pre>
+</li>
+</ol>
+<p>3.1. using the provider to inject the bloc class to the UI.dart</p>
+<pre><code>    class EmailSignInPage extends StatefulWidget {
+    EmailSignInPage({Key? key, required this.emailBloc}) : super(key: key);
+    // initial the instance of EmailBloc class
+    final EmailBloc emailBloc;
+
+    static Widget create(BuildContext context) {
+        return Provider&lt;EmailBloc&gt;(
+        create: (_) =&gt; EmailBloc(),
+        dispose: (_, emailBloc) =&gt; emailBloc.dispose(),
+        child: EmailSignInPage();
+</code></pre>
+<p>3.2. OR using Comsumer replace the Provider.of(context)</p>
+<pre><code>    class EmailSignInPage extends StatefulWidget {
+    EmailSignInPage({Key? key, required this.emailBloc}) : super(key: key);
+    // initial the instance of EmailBloc class
+    final EmailBloc emailBloc;
+
+    static Widget create(BuildContext context) {
+        return Provider&lt;EmailBloc&gt;(
+        create: (_) =&gt; EmailBloc(),
+        dispose: (_, emailBloc) =&gt; emailBloc.dispose(),
+        child: Consumer&lt;EmailBloc&gt;(
+            builder: (_, emailBloc, __) =&gt; EmailSignInPage(emailBloc: emailBloc),
+        ),
+        );
+    }
+</code></pre>
+<ol start="4">
+<li>
+<p>using the stream builder to receive the state change, need to call Provider.of(context) first.</p>
+<pre><code> final emailBloc = Provider.of&lt;EmailBloc&gt;(context, listen: false);
+ body: StreamBuilder&lt;EmailSignModel&gt;(
+         stream: widget.emailBloc.modelStream,
+         initialData: EmailSignModel(),
+         builder: (context, snapshot) {
+             return SingleChildScrollView(.....
+</code></pre>
+</li>
+<li>
+<p>Example to call EmailSignInPage()</p>
+<pre><code>         Navigator.of(context).push(
+           MaterialPageRoute&lt;void&gt;(
+             // fullscreenDialog: true,
+             builder: (context) =&gt; EmailSignInPage.create(context),
+           ),
+         );
+</code></pre>
+</li>
+</ol>
+<p>================================================================================</p>
+<p><em><strong>ChangeNotifier state management</strong></em></p>
+<ol>
+<li>
+<p>Builde the model with Mixin ChangeNotifier</p>
+<pre><code> enum FormType { signIn, register }
+ class EmailSignChangeModel with ChangeNotifier {
+ EmailSignChangeModel({
+     this.email = &quot;&quot;,
+     this.password = &quot;&quot;,
+     this.formType = FormType.signIn,
+     this.isLoading = false,
+     this.submitted = false,
+ });
+ String email;
+ String password;
+ FormType formType;
+ bool isLoading;
+ bool submitted;
+
+ void updateWith({
+     String? email,
+     String? password,
+     FormType? formType,
+     bool? isLoading,
+     bool? submitted,
+ }) {
+     this.email = email ?? this.email;
+     this.password = password ?? this.password;
+     this.formType = formType ?? this.formType;
+     this.isLoading = isLoading ?? this.isLoading;
+     this.submitted = submitted ?? this.submitted;
+     notifyListeners();
+ }
+ }
+</code></pre>
+</li>
+<li>
+<p>Inject the model to UI.dart</p>
+<pre><code> class EmailSignInChangePage extends StatefulWidget {
+ EmailSignInChangePage({Key? key, required this.emailChangeModel})
+     : super(key: key);
+ // initial the instance of EmailBloc class
+ final EmailSignChangeModel emailChangeModel;
+
+ static Widget create(BuildContext context) {
+     return ChangeNotifierProvider&lt;EmailSignChangeModel&gt;(
+     create: (_) =&gt; EmailSignChangeModel(),
+     child: Consumer&lt;EmailSignChangeModel&gt;(
+         builder: (_, emailChangeModel, __) =&gt;
+             EmailSignInChangePage(emailChangeModel: emailChangeModel),
+     ),
+     );
+ }
+</code></pre>
+</li>
+<li>
+<p>no need stream builder anymore, just use the model in statefull widget, such as widget.emailChangeModel.isLoading.</p>
+</li>
+</ol>
+<p>================================================================================</p>
+<p><em><strong>End</strong></em></p>
+
+
+		
+	</div>
+
+	<div class="pagination">
+		<a href="/posts/20210416_kalman/" class="left arrow">&#8592;</a>
+
+		<a href="#" class="top">Top</a>
+	</div>
+</main>
+
+
+        <footer>
+	
+	<span>
+		&copy; <time datetime="2021-07-09 17:16:29.65342 -0700 PDT m=&#43;0.127167721">2021</time> Shi. CA
+	</span>
+</footer>
+    </body>
+</html>

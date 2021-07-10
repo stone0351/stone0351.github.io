@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+	
+	
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>Flutter Gists &middot; Shi&#39;s Gists and Reflection</title>
+
+	
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href='/css/fonts.css'>
+	
+	<link rel="icon" type="image/png" sizes="32x32" href='/images/favicon-32x32.png'>
+	<link rel="icon" type="image/png" sizes="16x16" href='/images/favicon-16x16.png'>
+	<link rel="apple-touch-icon" sizes="180x180" href='/images/apple-touch-icon.png'>
+
+	
+	<link href="" rel="alternate"
+		type="application/rss+xml" title="Shi&#39;s Gists and Reflection" />
+
+	
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	
+	<script>
+    MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']],
+            displayMath: [['$$', '$$'], ['\\[', '\\]']],
+            processEscapes: true,
+            processEnvironments: true
+        },
+        options: {
+            skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+        }
+    };
+
+    window.addEventListener('load', (event) => {
+        document.querySelectorAll("mjx-container").forEach(function (x) {
+            x.parentElement.classList += 'has-jax'
+        })
+    });
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+    <body>
+        <nav class="nav">
+	<div class="nav-container">
+		<div class="nav-headbar">
+			<a href="/">
+				<h2 class="nav-title">Shi's Gists and Reflection</h2>
+			</a>
+		</div>
+		<ul>
+			<li>
+				<a href="https://github.com/stone0351">
+					<i class="fa fa-github"></i>
+					<span>MyGithub</span>
+				</a>
+			</li>
+			<li>
+				<a href="/posts/">
+					<span>Posts</span>
+				</a>
+			</li>
+		</ul>
+	</div>
+</nav>
+        
+
+<main>
+	<div class="post">
+		<div class="post-info">
+    <br>
+    <span>on&nbsp;</span><time datetime="2021-03-28 01:57:21 -0700 PDT">March 28, 2021</time>
+</div>
+		<h3 class="post-title">Flutter Gists</h3>
+<div class="post-line"></div>
+
+		
+
+		<p><em><strong>Flutter RaisedButton: callback function</strong></em></p>
+<p>See below example:</p>
+<hr>
+<pre><code>int  result = 0;
+void calculate(num1, num2) {
+ setState(() {
+     result = num1 + num2;
+ });
+}
+new RaisedButton(
+      onPressed: () =&gt; calculate(1, 100),
+      ...
+),
+new Text(&quot;$result&quot;)
+</code></pre>
+<hr>
+<ol>
+<li>onPressed: calculate(1, 100),</li>
+</ol>
+<blockquote>
+<p>calculate(1, 100) will be called every time Flutter runs build()</p>
+</blockquote>
+<ol start="2">
+<li>onPressed: () =&gt; calculate(1, 100),</li>
+</ol>
+<blockquote>
+<p>The same as onPressed: () {calculate(1,100);}</p>
+<p>When the button pressed, then call back the function</p>
+</blockquote>
+<ol start="3">
+<li>onPressed: calculate,</li>
+</ol>
+<blockquote>
+<p>if the function has no parameters, When the button pressed, then call
+back the function.</p>
+</blockquote>
+<p>================================================================================</p>
+<p><em><strong>Flutter builder: builder example</strong></em></p>
+<p>See below example:</p>
+<pre><code>showDialog(
+    context: context,
+    builder: new Builder(builder: (_) =&gt; myWidget),
+);
+
+equal to:
+
+showDialog(
+    context: context,
+    builder: (_) =&gt; myWidget,
+);
+</code></pre>
+<p>================================================================================</p>
+<p><em><strong>Flutter create a StatefulWidget example</strong></em></p>
+<pre><code>class MyApp extends StatefulWidget
+{
+@override
+// _myState here is actually a type, not a variable name.
+_myState createState() =&gt; _myState();
+}  
+
+equal to:
+
+@override
+_myState createState() {
+    return new _myState();
+}
+</code></pre>
+<p>================================================================================</p>
+<p><em><strong>Flutter Redirecting constructors example</strong></em></p>
+<pre><code>class Automobile {
+    String make;
+    String model;
+    int mpg;
+
+    // The main constructor for this class.
+    Automobile(this.make, this.model, this.mpg);
+
+    // Delegates to the main constructor.
+    Automobile.hybrid(String make, String model) : this(make, model, 60);
+
+    // Delegates to a named constructor
+    Automobile.fancyHybrid() : this.hybrid('Futurecar', 'Mark 2');
+}
+</code></pre>
+<hr>
+<pre><code>class Color {
+    int red;
+    int green;
+    int blue;
+
+    Color(this.red, this.green, this.blue);
+
+    Color.black() : this(0, 0, 0);
+}
+</code></pre>
+<p>================================================================================</p>
+<p><em><strong>Colon in Dart Constructor Syntax</strong></em></p>
+<p>The code below assigns the parameter named number to the final field this.number if it is non-null and otherwise it assigns 0. This means that the left-hand number of the assignment actually refers to this.number. Now, you can even make an assertion that will never fail (and is redundant because of that):</p>
+<hr>
+<pre><code>class X {
+  final int number;
+  X(number): number = number ?? 0, assert(number != null);
+}
+</code></pre>
+<hr>
+<p>This &ldquo;:&rdquo; feature in Dart is called &ldquo;initializer list&rdquo;.
+It allows you to initialize fields of your class, make assertions and call the super constructor.</p>
+<hr>
+<pre><code>class Point {
+  num x, y;
+  Point(this.x, this.y);
+  Point.origin(): this.x = 10, this.y = 10;
+}
+
+main() {
+  Point p = Point.origin();
+  print(p.x); // 10
+  print(p.y); // 10
+}
+</code></pre>
+<p>================================================================================</p>
+<p><em><strong>End</strong></em></p>
+
+
+		
+	</div>
+
+	<div class="pagination">
+		<a href="/posts/20210326_kinematic/" class="left arrow">&#8592;</a>
+		<a href="/posts/20210405_ubuntu/" class="right arrow">&#8594;</a>
+
+		<a href="#" class="top">Top</a>
+	</div>
+</main>
+
+
+        <footer>
+	
+	<span>
+		&copy; <time datetime="2021-07-09 17:16:29.642512 -0700 PDT m=&#43;0.116259889">2021</time> Shi. CA
+	</span>
+</footer>
+    </body>
+</html>
