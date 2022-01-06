@@ -6,13 +6,26 @@
     <description>Recent content on Shi&#39;s Gists and Reflection</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 09 Jul 2021 01:57:21 -0700</lastBuildDate><atom:link href="https://blog.getmemap.com/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 06 Jan 2022 01:57:21 -0700</lastBuildDate><atom:link href="https://blog.getmemap.com/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Frp install on Raspberry Pi Zero</title>
+      <link>https://blog.getmemap.com/posts/20220106_frp_for_raspberrypi/</link>
+      <pubDate>Thu, 06 Jan 2022 01:57:21 -0700</pubDate>
+      
+      <guid>https://blog.getmemap.com/posts/20220106_frp_for_raspberrypi/</guid>
+      <description>Github：https://github.com/fatedier/frp
+wget https://github.com/fatedier/frp/relea...
+sudo tar -zxvf frp_XXXXX.tar.gz
+cd frp_XXXXX
+ // frps.ini configuration [common] bind_port = 7000 vhost_http_port = 54321 vhost_https_port = 54322 token = XXXXXX // frpc.ini configuration [common] server_addr = 1582.getmemap.com server_port = 7000 token = XXXXXX [web] type = http local_ip = 127.0.0.1 local_port = 80 remote_port = 54321 custom_domains = 1582.getmemap.com [https] type = https local_ip = 127.0.0.1 local_port = 443 remote_port = 54322 custom_domains = 1582.</description>
+    </item>
+    
     <item>
       <title>Flutter State Management</title>
-      <link>https://blog.getmemap.com/posts/20210709_flutter_state_management/</link>
+      <link>https://blog.getmemap.com/posts/20210709_flutter_state_management-copy/</link>
       <pubDate>Fri, 09 Jul 2021 01:57:21 -0700</pubDate>
       
-      <guid>https://blog.getmemap.com/posts/20210709_flutter_state_management/</guid>
+      <guid>https://blog.getmemap.com/posts/20210709_flutter_state_management-copy/</guid>
       <description>setState
 setState will mix the state management with the UI code, only for simple app.
 ================================================================================
@@ -122,6 +135,7 @@ git merge origin/master
  hugo server &amp;ndash;disableFastRender
 // update the public files
 hugo -t &amp;lt;theme name&amp;gt;
+e.g. hugo -t Tale
 ================================================================================
 End</description>
     </item>

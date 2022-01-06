@@ -6,7 +6,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	<title>Git and Hugo Common Commands &middot; Shi&#39;s Gists and Reflection</title>
+	<title>Frp install on Raspberry Pi Zero &middot; Shi&#39;s Gists and Reflection</title>
 
 	
 	<link rel="stylesheet" href="/css/style.css">
@@ -77,28 +77,76 @@
 	<div class="post">
 		<div class="post-info">
     <br>
-    <span>on&nbsp;</span><time datetime="2021-03-25 19:35:34 -0700 PDT">March 25, 2021</time>
+    <span>on&nbsp;</span><time datetime="2022-01-06 01:57:21 -0700 -0700">January 6, 2022</time>
 </div>
-		<h3 class="post-title">Git and Hugo Common Commands</h3>
+		<h3 class="post-title">Frp install on Raspberry Pi Zero</h3>
 <div class="post-line"></div>
 
 		
 
-		<p>git log</p>
-<p>git status</p>
-<p>git add -A .</p>
-<p>git commit -m &lsquo;Initial commit&rsquo;</p>
-<p>git remote -v</p>
-<p>git remote remove origin</p>
-<p>git remote add origin <a href="https://github.com/stone0351/stone0351.github.io">https://github.com/stone0351/stone0351.github.io</a></p>
-<p>git push -u origin master</p>
-<p>git pull origin</p>
-<p>git merge origin/master</p>
+		<p>Github：https://github.com/fatedier/frp</p>
+<p>wget <a href="https://github.com/fatedier/frp/relea..">https://github.com/fatedier/frp/relea..</a>.</p>
+<p>sudo tar -zxvf frp_XXXXX.tar.gz</p>
+<p>cd frp_XXXXX</p>
 <hr>
-<p>hugo server &ndash;disableFastRender</p>
-<p>// update the public files</p>
-<p>hugo -t &lt;theme name&gt;</p>
-<p>e.g. hugo -t Tale</p>
+<pre><code>// frps.ini configuration
+
+[common]
+bind_port = 7000
+vhost_http_port = 54321
+vhost_https_port = 54322
+token = XXXXXX
+
+// frpc.ini configuration
+
+[common]
+server_addr = 1582.getmemap.com
+server_port = 7000
+token = XXXXXX
+
+[web]
+type = http
+local_ip = 127.0.0.1
+local_port = 80
+remote_port = 54321
+custom_domains = 1582.getmemap.com
+
+[https]
+type = https
+local_ip = 127.0.0.1
+local_port = 443
+remote_port = 54322
+custom_domains = 1582.getmemap.com
+
+[RDP]
+type = tcp
+local_ip = 127.0.0.1
+local_port = 3389
+remote_port = 7500
+custom_domains = 1582.getmemap.com
+
+// Start Frps on Raspberry pi
+
+// one time start
+
+./frps -c ./frps.ini
+
+// auto start
+
+sudo nano /etc/rc.local
+nohup /home/pi/Frp/frps -c /home/pi/Frp/frps.ini &amp;
+
+// Start Frpc on Windows
+
+// one time start
+
+./frpc -c ./frpc.ini
+
+// auto start
+
+nohup ./frpc -c ./frpc.ini &amp;
+</code></pre>
+<hr>
 <p>================================================================================</p>
 <p><em><strong>End</strong></em></p>
 
@@ -107,7 +155,7 @@
 	</div>
 
 	<div class="pagination">
-		<a href="/posts/20210326_kinematic/" class="right arrow">&#8594;</a>
+		<a href="/posts/20210709_flutter_state_management-copy/" class="left arrow">&#8592;</a>
 
 		<a href="#" class="top">Top</a>
 	</div>
@@ -117,7 +165,7 @@
         <footer>
 	
 	<span>
-		&copy; <time datetime="2022-01-06 12:16:53.847055 -0800 PST m=&#43;0.073495396">2022</time> Shi. CA
+		&copy; <time datetime="2022-01-06 12:16:53.851295 -0800 PST m=&#43;0.077735506">2022</time> Shi. CA
 	</span>
 </footer>
     </body>

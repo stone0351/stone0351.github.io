@@ -81,7 +81,23 @@
 
 	<div class="catalogue">
 		
-			<a href="https://blog.getmemap.com/posts/20210709_flutter_state_management/" class="catalogue-item">
+			<a href="https://blog.getmemap.com/posts/20220106_frp_for_raspberrypi/" class="catalogue-item">
+    <div>
+        <time datetime="2022-01-06 01:57:21 -0700 -0700" class="catalogue-time">January 6, 2022</time>
+        <h4 class="catalogue-title">Frp install on Raspberry Pi Zero</h4>
+        <div class="catalogue-line"></div>
+
+        <p>
+            Github：https://github.com/fatedier/frp
+wget https://github.com/fatedier/frp/relea...
+sudo tar -zxvf frp_XXXXX.tar.gz
+cd frp_XXXXX
+ // frps.ini configuration [common] bind_port = 7000 vhost_http_port = 54321 vhost_https_port = 54322 token = XXXXXX // frpc.ini configuration [common] server_addr = 1582.getmemap.com server_port = 7000 token = XXXXXX [web] type = http local_ip = 127.0.0.1 local_port = 80 remote_port = 54321 custom_domains = 1582.getmemap.com [https] type = https local_ip = 127.0.0.1 local_port = 443 remote_port = 54322 custom_domains = 1582.
+        </p>
+    </div>
+</a>
+		
+			<a href="https://blog.getmemap.com/posts/20210709_flutter_state_management-copy/" class="catalogue-item">
     <div>
         <time datetime="2021-07-09 01:57:21 -0700 PDT" class="catalogue-time">July 9, 2021</time>
         <h4 class="catalogue-title">Flutter State Management</h4>
@@ -218,6 +234,7 @@ git merge origin/master
  hugo server &ndash;disableFastRender
 // update the public files
 hugo -t &lt;theme name&gt;
+e.g. hugo -t Tale
 ================================================================================
 End
         </p>
@@ -238,7 +255,7 @@ End
         <footer>
 	
 	<span>
-		&copy; <time datetime="2021-07-09 17:16:29.662617 -0700 PDT m=&#43;0.136364565">2021</time> Shi. CA
+		&copy; <time datetime="2022-01-06 12:16:53.865299 -0800 PST m=&#43;0.091740315">2022</time> Shi. CA
 	</span>
 </footer>
     </body>
